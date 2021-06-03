@@ -96,6 +96,8 @@ quest3=False
 quest4=False
 quest5=False
 quest6=False
+quest7=False
+quest8=False
 #Uses on cheat codes
 cheat_wood_int=0
 cheat_dirt_int=0
@@ -108,6 +110,9 @@ cheat_dirt=False
 cheat_water=False
 cheat_rocks=False
 cheat_all=False
+#Settings
+error_message=True
+version=True
 
 #First cord = Area, Second cord = Height, Third cord = distance
 #Though all cords = distance
