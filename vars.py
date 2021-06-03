@@ -75,8 +75,8 @@ money=25
 stanima=100 #Starting Max 100, Default 100
 max_stanima=130 #Default 130
 exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
-donated_money=30
-donated_tf=[1,1] #0=False, 1=True. Items are in order on donate/rewards
+donated_money=0
+donated_tf=[0,0] #0=False, 1=True. Items are in order on donate/rewards
 #Quests
 quest1=False #False=Not done
 quest2=False #True=Done
@@ -96,6 +96,9 @@ cheat_dirt=False
 cheat_water=False
 cheat_rocks=False
 cheat_all=False
+#Settings
+error_message=True
+version=True
 
 #Though all cords = distance
 #Lake = 27,0,?
