@@ -1,0 +1,43 @@
+Before publishing non dev release.
+1. Do not add vars_beta to github.
+2. Change dev to False in main.py.
+3. Make sure dev locks are gone for completed functions.
+4. Update Show Patch Notes function in main.py.
+5. Make sure vars_beta.py has everything vars.py has. Not the other way around.
+
+After publishing non dev release.
+1. Clear updates in the version in updates.txt.
+2. Add more next version update notes in updates.txt.
+3. Change dev to True in main.py.
+
+Quests:
+1. 5 sticks     25 cents
+2. 2 pickaxes   32 cents
+3. 5 wood       30 cents
+4. 15 sticks    45 cents
+5. 4 bowls      35 cents
+6. 5 clay       30 cents
+7. 2 copper     25 cents
+8. 2 lapiz      30 cents
+
+Quests coming soon.
+9. 3 gold       33 cents
+10. 5 coal      15 cents
+11. 6 wood      22 cents
+12. 1 axe       10 cents
+
+----Goal of game----
+You are trying to make enough cents to live your life. You are behind your house payments severaly.
+The bank has given you 2 years to pay it back full and if not, you will loose everything.
+Including your children, due to being backrupt and not being able to take care of them.
+You have to collect 5000 cents to pay back your house.
+
+
+Once completed you can continue to collect cents to buy stuff new things for your home.
+
+#Before completing story
+1. Collect 5000 cents. Once 5000 is in your inventory an option will apear to visit family
+
+#After completing story
+1. Buying stuff for home is unlocked.
+2. An option to go visit family is unlocked and will stay.
