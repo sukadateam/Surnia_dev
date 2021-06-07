@@ -14,6 +14,8 @@ gold=0
 diamond=0
 copper=0
 lapiz=0
+zinc=0
+cobalt=0
 #Home storage vars
 storage_wood=0
 storage_water=0
@@ -76,7 +78,7 @@ stanima=100 #Starting Max 100, Default 100
 max_stanima=130 #Default 130
 exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
 donated_money=0
-donated_tf=[0,0] #0=False, 1=True. Items are in order on donate/rewards
+donated_tf=[0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
 #Quests
 quest1=False #False=Not done
 quest2=False #True=Done
@@ -84,6 +86,8 @@ quest3=False
 quest4=False
 quest5=False
 quest6=False
+quest7=False
+quest8=False
 #Uses on cheat codes
 cheat_wood_int=0
 cheat_dirt_int=0
@@ -99,6 +103,7 @@ cheat_all=False
 #Settings
 error_message=True
 version=True
+gather_loop=True
 
 #Though all cords = distance
 #Lake = 27,0,?
