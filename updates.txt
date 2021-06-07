@@ -1,32 +1,27 @@
 User updates in this version.
-1. When viewing inventory, goodies now displays lbs instead of Qty
-2. A message appears when vars_beta cannot be found when trying to import.
-3. You don't need dev mode to make tools anymore.
-4. Edited sell function error message
-5. Changed Qty on goodies to lbs.
-6. Added an option to not display error messages. Change in settings.
-7. You can disable version number at home screen. Change in settings.
-8. Changed money to cents in sell, quests, buy
-9. Fixed dev tools. Items would not open. Cause: choice was being lowercased.
-10. Added copper, lapiz, zinc, and cobalt to Dev_menu().
-11. Added quest 5-8 on Dev_var() and a All of the above option.
-12. Updated save file. Quest7, quest8, error_message, and version vars now save.
-13. Cheat codes function now check for uses on each cheat before using.
-14. When using cheat_code var in vars.py main.py now check for avaible uses on each cheat code.
-15. Added quest7 and quest8 to quests and Dev_var().
+1. Added setting to disable gather resource loop. On gather resources.
+2. Added clear and exit options in gather resources.
+3. Donated now gives items when you claim your loot.
+4. Added 4 more rewards for donate.
+5. Updated save file.
+6. Added quest7 and quest8 to quests. Sorry, I thought I already did this. Apperently not.
+7. Added zinc and cobalt to mining, sell, buy.
+8. Dev_var() function now doesn't display with error messages disabled in settings.
+9. Donate fucntion now doesn't display with error messages disabled in settings.
+10. Save function now notifies user if error message is enabled, if a vars.py file cannot be found. I don't know how you would load the game without it but you know. There's always a way. Actually it's pretty easy. Lmao.
+11. Added zinc and cobalt to inventory/storage
+12. Withdraw now displays correct items stored on inventory/storage
 
 Update 0.1.7
-1. Add zinc and cobalt to mining, sell, buy.
-2. Add more error messages. Allows app to run when error is encoutered.
-3. Test all functions for errors and spelling.
-4. Add more donation rewards.
-5. Add 4 more quests that reward cheat codes.
-6. Add option to leave loop on gather resources.
+1. Test all functions for errors and spelling.
 
 Update 0.1.8
 1. Add new items to tips function.
 2. If user enter "" on a function do not display move_on. Just leave the function.
 3. In inventory add option to show completed quests.
+4. Add 2 more donation rewards.
+5. Add 2 more quests.
+6. Balance out prices and starting loot.
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
