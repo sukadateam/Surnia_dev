@@ -1,4 +1,6 @@
-#Version 0.1.7 Test 1 is out!
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#Version 0.1.7 Test 2 is out!
 import time,os,random
 dev=True#Default False
 if dev==True:
@@ -268,7 +270,7 @@ cheap=False
 while p==True:
   clear()
   if version==True:
-    print 'Current Version: 0.1.7 Test 1'
+    print 'Current Version: 0.1.7 Test 2'
   if dev==True:
     print 'Dev_options: Enabled'
   print '(1)Gather Resources'
@@ -311,20 +313,21 @@ while p==True:
   clear()
   loop2()
   if choice == "1":
-    loop=True
+    loop=False
     warn=False
     loop_count=1
-    print 'To loop type (loop) or hit enter to continue.'
-    choice=raw_input('What do you choose:')
-    if choice == "loop":
-      try:
-        loop_count=int(raw_input('How many times:'))
-      except ValueError:
-        if error_message==True:
-          print 'System message: ValueError'
-          print 'Reason: A number was not entered.'
-    if choice is not "loop":
-      loop=False
+    if gather_loop==True:
+      print 'To loop type (loop) or hit enter to continue.'
+      choice=raw_input('What do you choose:')
+      if choice == "loop":
+        try:
+          loop_count=int(raw_input('How many times:'))
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+      if choice == "loop":
+        loop=True
     for i in range(loop_count):
       self_int=0
       self_int+=wood+water+dirt+rocks+clay+bowl+sticks
@@ -335,9 +338,13 @@ while p==True:
       if self_int<self_storage+1:
         #Water + Dirt = Clay
         #Wood = house, water holder, storage
-        print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks'
+        print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks\n(*)Exit\n(os)Clear Text'
         choice=raw_input('What would you like to gather:')
         loop2()
+        if choice == "os":
+          clear()
+        if choice == "*":
+          break
         if choice == "1":
           if dev==False:
             if current_surrounding not in dirt_biomes:
@@ -942,6 +949,40 @@ while p==True:
               print 'System message: ValueError'
               print 'Reason: A number was not entered.'
       choice=''
+    if choice=="17":
+      if zinc<1:
+        print 'You don\'t have any to sell'
+      if zinc>0:
+        choice=raw_input('How many:')
+        try:
+          if zinc==int(choice) or zinc>int(choice):
+            money+=int(choice)*price_zinc
+            zinc-=int(choice)
+            print 'Current holdings:'
+            print 'Cents:',money
+            print 'Zinc:',zinc
+        except ValueError:
+          if error_message==True:
+              print 'System message: ValueError'
+              print 'Reason: A number was not entered.'
+      choice=''
+    if choice=="18":
+      if cobalt<1:
+        print 'You don\'t have any to sell'
+      if cobalt>0:
+        choice=raw_input('How many:')
+        try:
+          if cobalt==int(choice) or cobalt>int(choice):
+            money+=int(choice)*price_cobalt
+            cobalt-=int(choice)
+            print 'Current holdings:'
+            print 'Cents:',money
+            print 'Cobalt:',cobalt
+        except ValueError:
+          if error_message==True:
+              print 'System message: ValueError'
+              print 'Reason: A number was not entered.'
+      choice=''
     move_on=raw_input('Hit enter to exit sell:')
   if choice == "9":
     self_int=0
@@ -964,6 +1005,8 @@ while p==True:
           print '(4)Diamond    Est: 1 min'
           print '(5)Copper     Est: 10 sec'
           print '(6)Lapiz      Est: 17 sec'
+          print '(7)Zinc       Est: 23 sec'
+          print '(8)Cobalt     Est: 20 sec'
           choice = raw_input('What would you like to mine:')
           if choice == "1":
             print 'Going to find some coal...'
@@ -1019,6 +1062,24 @@ while p==True:
             lapiz+=1
             pickaxe-=1
             print 'You got 1 lapiz! But lost 1 pickaxe :('
+          if choice == "7":
+            print 'Going to find some zinc...'
+            time.sleep(1)
+            print 'Found some zinc. \nMining the zinc...'
+            print 'Est: 23s'
+            time.sleep(23)
+            zinc+=2
+            pickaxe-=1
+            print 'You got 2 zinc! But lost 1 pickaxe :('
+          if choice == "8":
+            print 'Going to find some cobalt...'
+            time.sleep(1)
+            print 'Found some cobalt. \nMining the cobalt...'
+            print 'Est: 20s'
+            time.sleep(20)
+            cobalt+=2
+            pickaxe-=1
+            print 'You got 2 cobalt! But lost 1 pickaxe :('
         if stanima<60 or dev==False:
           clear()
           print 'You need to go to sleep.'
@@ -1132,6 +1193,40 @@ while p==True:
             clay-=5
             money+=30
             quest6=True
+    if quest7==False:
+      if hi==True:
+        hi=False
+        print 'Your 7th quest is to get me: 2 copper'
+        print 'Reward: 25 Cents'
+        choice=raw_input('Do you have 2 copper:').lower()
+        if choice == "yes":
+          print 'Checking...'
+          time.sleep(1)
+          if copper<2:
+            print 'Sorry, but you do not. Come back when you do.'
+          if copper>1:
+            print 'Congrats you finished your 7th quest'
+            print 'You got 25 Cents'
+            copper-=2
+            money+=25
+            quest7=True
+    if quest8==False:
+      if hi==True:
+        hi=False
+        print 'Your 8th quest is to get me: 2 lapiz'
+        print 'Reward: 30 Cents'
+        choice=raw_input('Do you have 5 clay:').lower()
+        if choice == "yes":
+          print 'Checking...'
+          time.sleep(1)
+          if lapiz<2:
+            print 'Sorry, but you do not. Come back when you do.'
+          if lapiz>1:
+            print 'Congrats you finished your 8th quest'
+            print 'You got 30 Cents'
+            lapiz-=2
+            money+=30
+            quest8=True
     if quest1==True and quest2==True:
       if quest3==True and quest4==True:
         if quest5==True and quest6==True:
@@ -1145,8 +1240,8 @@ while p==True:
     if self_int<self_storage+1:
       loop4(s=False,other=False,numbers=False,price=True)
       print 'Storage capacity:'
-      print '  (17)More inventory storage'
-      print '  (18)More home storage'
+      print '  (19)More inventory storage'
+      print '  (20)More home storage'
       choice=raw_input('What would you like to buy:')
       if choice == "1":
         choice = raw_input('How many:')
@@ -1404,6 +1499,38 @@ while p==True:
             print 'System message: ValueError'
             print 'Reason: A number was not entered.'
       if choice == "17":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_zinc*int(choice):
+            money-=buy_price_zinc*int(choice)
+            zinc+=int(choice)
+            print 'You now have:',zinc
+          if money<buy_price_zinc*int(choice):
+            print 'You don\'t have enough Cents'
+            print 'Total asked:',choice,'zinc'
+            print 'Total cost:',buy_price_zinc*int(choice),'Cents'
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+      if choice == "18":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_cobalt*int(choice):
+            money-=buy_price_cobalt*int(choice)
+            cobalt+=int(choice)
+            print 'You now have:',cobalt
+          if money<buy_price_cobalt*int(choice):
+            print 'You don\'t have enough Cents'
+            print 'Total asked:',choice,'cobalt'
+            print 'Total cost:',buy_price_cobalt*int(choice),'Cents'
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+      if choice == "19":
         print 'Price: 1 item = 3 Cents'
         try:
           choice = raw_input('How much more storage:')
@@ -1417,7 +1544,7 @@ while p==True:
           if error_message==True:
             print 'System message: ValueError'
             print 'Reason: A number was not entered.'
-      if choice == "18":
+      if choice == "20":
         print 'Price: 1 item = 5 Cents'
         try:
           choice = raw_input('How much more storage:')
@@ -1544,11 +1671,37 @@ while p==True:
         if donated_tf[0]==0:
           donated_tf[0]=1
           print 'Reward: 5 cobalt'
+          cobalt+=5
           hi=False
       if donated_money>29:
         if donated_tf[1]==0:
           donated_tf[1]=1
           print 'Reward: 3 pickaxe(s)'
+          pickaxe+=3
+          hi=False
+      if donated_money>44:
+        if donated_tf[2]==0:
+          donated_tf[2]=1
+          print 'Reward: 3 zinc'
+          zinc+=6
+          hi=False
+      if donated_money>59:
+        if donated_tf[3]==0:
+          donated_tf[3]=1
+          print 'Reward: 3 pickaxe(s)'
+          pickaxe+=3
+          hi=False
+      if donated_money>74:
+        if donated_tf[4]==0:
+          donated_tf[4]=1
+          print 'Reward: 4 diamond(s)'
+          diamond+=4
+          hi=False
+      if donated_money>89:
+        if donated_tf[5]==0:
+          donated_tf[5]=1
+          print 'Reward: 2 pickaxe(s)'
+          pickaxe+=2
           hi=False
       if hi==True:
         print 'Nothing to claim.'
@@ -1558,6 +1711,10 @@ while p==True:
       print 'Donated:      Reward:'
       print '15 cents      5 cobalt'
       print '30 cents      3 pickaxe(s)'
+      print '45 cents      6 zinc'
+      print '60 cents      3 pickaxe(s)'
+      print '75 cents      4 diamond(s)'
+      print '90 cents      2 pickaxe(s)'
     if choice == "donate":
       clear()
       choice=raw_input('How much to donate:')
@@ -1570,8 +1727,9 @@ while p==True:
           print 'Money donated:',int(choice)
           print 'Lifetime donations:',donated_money
       except ValueError:
-        print 'System message: ValueError'
-        print 'Reason: A number was not entered.'
+        if error_message==True:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
     choice=''
     move_on=raw_input('Hit enter to exit donate:')
   if choice in exit_pos:
@@ -1630,12 +1788,14 @@ while p==True:
               print '(8)Pickaxes:',storage_pickaxe,'(Qty)'
               print '(9)Shovels:',storage_shovel,'(Qty)'
               print '(10)Axes:',storage_axe,'(Qty)'
-              print '(11)Coal:',coal,'(Qty)'
-              print '(12)Iron:',iron,'(Qty)'
-              print '(13)Gold:',gold,'(Qty)'
-              print '(14)Diamond:',diamond,'(Qty)'
-              print '(15)Copper:',copper,'(Qty)'
-              print '(16)Lapiz:',lapiz,'(Qty)'
+              print '(11)Coal:',storage_coal,'(Qty)'
+              print '(12)Iron:',storage_iron,'(Qty)'
+              print '(13)Gold:',storage_gold,'(Qty)'
+              print '(14)Diamond:',storage_diamond,'(Qty)'
+              print '(15)Copper:',storage_copper,'(Qty)'
+              print '(16)Lapiz:',storage_lapiz,'(Qty)'
+              print '(17)Zinc:',storage_zinc,'(Qty)'
+              print '(18)Cobalt:',storage_cobalt,'(Qty)'
               choice = raw_input('What would you like to withdraw:')
               if choice == "1":
                 if storage_wood<1:
@@ -1861,6 +2021,35 @@ while p==True:
                       print 'Lapiz in inventory:',lapiz
                   except ValueError, TypeError:
                     print 'You need to enter a number.'
+              if choice == "17":
+                if storage_zinc<1:
+                  print 'You don\'t have enough.'
+                if storage_zinc>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_zinc+1:
+                      zinc+=int(choice)
+                      storage_zinc-=int(choice)
+                      print 'Current holding:'
+                      print 'Zinc in storage:',storage_zinc
+                      print 'Zinc in inventory:',zinc
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "18":
+                if storage_cobalt<1:
+                  print 'You don\'t have enough.'
+                if storage_cobalt>0:
+                  choice=raw_input('How many to withdraw:')
+                  try:
+                    if int(choice)<storage_cobalt+1:
+                      cobalt+=int(choice)
+                      storage_cobalt-=int(choice)
+                      print 'Current holding:'
+                      print 'Cobalt in storage:',storage_cobalt
+                      print 'Cobalt in inventory:',cobalt
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              
               move_on=raw_input('Hit enter to exit crafting:')
               choice=''
             if choice2 == "2":
@@ -1881,6 +2070,8 @@ while p==True:
               print '(14)Diamond:',diamond,'(Qty)'
               print '(15)Copper:',copper,'(Qty)'
               print '(16)Lapiz:',lapiz,'(Qty)'
+              print '(17)Zinc:',zinc,'(Qty)'
+              print '(18)Cobalt:',cobalt,'(Qty)'
               choice = raw_input('What would you like to deposite:')
               if choice == "1":
                 if wood<1:
@@ -2106,6 +2297,34 @@ while p==True:
                       print 'Lapiz in inventory:',lapiz
                   except ValueError, TypeError:
                     print 'You need to enter a number.'
+              if choice == "17":
+                if zinc<1:
+                  print 'You don\'t have enough.'
+                if zinc>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<zinc+1:
+                      zinc-=int(choice)
+                      storage_zinc+=int(choice)
+                      print 'Current holding:'
+                      print 'Zinc in storage:',storage_zinc
+                      print 'Zinc in inventory:',zinc
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
+              if choice == "18":
+                if cobalt<1:
+                  print 'You don\'t have enough.'
+                if cobalt>0:
+                  choice=raw_input('How many to deposit:')
+                  try:
+                    if int(choice)<cobalt+1:
+                      cobalt-=int(choice)
+                      storage_cobalt+=int(choice)
+                      print 'Current holding:'
+                      print 'Cobalt in storage:',storage_cobalt
+                      print 'Cobalt in inventory:',cobalt
+                  except ValueError, TypeError:
+                    print 'You need to enter a number.'
             if choice2 == "3":
               clear()
               print 'By!'
@@ -2135,6 +2354,10 @@ while p==True:
       print '(2)Version info: Enabled'
     if version==False:
       print '(2)Version info: Disabled'
+    if gather_loop==True:
+      print '(3)Gather resource loop: Enabled'
+    if gather_loop==False:
+      print '(3)Gather resource loop: Disabled'
     choice=raw_input('Enter number to toggle:')
     if choice == "1":
       hi=True
@@ -2152,8 +2375,22 @@ while p==True:
       if version==False:
         if hi==True:
           version=True
+    if choice == "3":
+      hi==True
+      if gather_loop==True:
+        gather_loop=False
+        hi=False
+      if gather_loop==False:
+        if hi==True:
+          gather_loop=True
   if choice == "save":
     #save.write('='+str()+'\n')
+    try:
+      save1=file('vars.py','r')
+    except:
+        if error_message==True:
+          print 'System message: ImportError'
+          print 'Reason: Cannot find file'
     save=file('vars.py','w')
     save.write('#Materials\n')
     save.write('wood='+str(wood)+' #logs\n')
@@ -2171,6 +2408,8 @@ while p==True:
     save.write('diamond='+str(diamond)+'\n')
     save.write('copper='+str(copper)+'\n')
     save.write('lapiz='+str(lapiz)+'\n')
+    save.write('zinc='+str(zinc)+'\n')
+    save.write('cobalt='+str(cobalt)+'\n')
     save.write('#Home storage vars\n')
     save.write('storage_wood='+str(storage_wood)+'\n')
     save.write('storage_water='+str(storage_water)+'\n')
@@ -2233,7 +2472,7 @@ while p==True:
     save.write('max_stanima='+str(max_stanima)+' #Default 130\n')
     save.write("exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']\n")
     save.write('donated_money='+str(donated_money)+'\n')
-    save.write('donated_tf=['+str(donated_tf[0])+','+str(donated_tf[1])+'] #0=False, 1=True. Items are in order on donate/rewards\n')
+    save.write('donated_tf=['+str(donated_tf[0])+','+str(donated_tf[1])+','+str(donated_tf[2])+','+str(donated_tf[3])+','+str(donated_tf[4])+','+str(donated_tf[5])+'] #0=False, 1=True. Items are in order on donate/rewards\n')
     save.write('#Quests\n')
     save.write('quest1='+str(quest1)+' #False=Not done\n')
     save.write('quest2='+str(quest2)+' #True=Done\n')
@@ -2258,6 +2497,7 @@ while p==True:
     save.write('#Settings\n')
     save.write('error_message='+str(error_message)+'\n')
     save.write('version='+str(version)+'\n')
+    save.write('gather_loop='+str(gather_loop)+'\n')
     save.write("\n#Though all cords = distance\n")
     save.write("#Lake = 27,0,?\n")
     save.write("#River = 10,0,?\n")
@@ -2311,7 +2551,11 @@ while p==True:
     save.close()
   if choice == "update" or choice == "updates":
     print "Patch notes for 0.1.7\n"
-    print 'Nothing to show currently.'
+    print '1. Donate has 4 more rewards.'
+    print '2. Quest 7 and 8 has been added.'
+    print '3. Added another setting in settings.'
+    print '4. Fixed some saving bugs.'
+    print '5. Added zinc and cobalt to mining, sell, buy.'
     move_on=raw_input('Hit enter to exit updates:')
   if choice == "Dev_menu":
     if dev==True:
@@ -2708,8 +2952,9 @@ while p==True:
             try:
               self_storage=int(choice)
             except ValueError:
-              print 'System message: ValueError'
-              print 'Reason: A number was not entered.'
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
               move_on=raw_input('Hit enter to leave:')
           choice=''
         if choice == "var 4":
@@ -2720,8 +2965,9 @@ while p==True:
             try:
               home_storage=int(choice)
             except ValueError:
-              print 'System message: ValueError'
-              print 'Reason: A number was not entered.'
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
               move_on=raw_input('Hit enter to leave:')
           choice=''
         if choice == "var 5":
@@ -2735,8 +2981,9 @@ while p==True:
               if int(choice)<max_stanima:
                 stanima=int(choice)
             except ValueError:
-              print 'System message: ValueError'
-              print 'Reason: A number was not entered.'
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
               move_on=raw_input('Hit enter to leave:')
           choice=''
         if choice == "var 6":
@@ -2747,8 +2994,9 @@ while p==True:
             try:
               max_stanima=int(choice)
             except ValueError:
-              print 'System message: ValueError'
-              print 'Reason: A number was not entered.'
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
               move_on=raw_input('Hit enter to leave:')
           choice=''
         if choice == "quest1":
