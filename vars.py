@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 #Materials
 wood=10 #logs
 water=10 #oz
@@ -43,9 +45,9 @@ pickaxe=3 #Qty, Can be used 1 time
 shovel=2 #Qty, Can be used 1 time
 axe=3 #Qty, Can be used 1 time
 #Cords
-lake1_cords=[27, 0, 69]
-lake2_cords=[27, 0, 103]
-lake3_cords=[27, 0, 409]
+lake1_cords=[27,0,69]
+lake2_cords=[27,0,103]
+lake3_cords=[27,0,409]
 river1_cords=[10, 0, 32]
 river2_cords=[10, 0, 210]
 river3_cords=[10, 0, 122]
@@ -73,13 +75,15 @@ sand_biomes=['desert #1','desert #2','desert #3','abandoned city','city #1','cit
 dirt_biomes=['forest #1','forest #2','forest #3']
 #Others
 sides=False
-money=25
+money=25 #Default 25
 stanima=100 #Starting Max 100, Default 100
 max_stanima=130 #Default 130
-exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
+exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃƒÂ³s']
 donated_money=0
 donated_tf=[0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+go_home=['help','leave','break']
 #Quests
+quest_count=12
 quest1=False #False=Not done
 quest2=False #True=Done
 quest3=False
@@ -104,6 +108,9 @@ cheat_all=False
 error_message=True
 version=True
 gather_loop=True
+create_new_save=True
+quick_leave=True
+hit_to_exit=False
 
 #Though all cords = distance
 #Lake = 27,0,?
@@ -157,4 +164,4 @@ buy_price_cobalt=6
 # --- CODES IN GAME ---
 dev_options='W3rS3cur3' #In the main menu enter this to activate.
 cheat_code=""
-cheat_amount=10#The amount to add when using cheat code. #MAX IS 25 items
+cheat_amount=10 #The amount to add when using cheat code. #MAX IS 25 items
