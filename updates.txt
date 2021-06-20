@@ -1,27 +1,37 @@
 User updates in this version.
-1. Added setting to disable gather resource loop. On gather resources.
-2. Added clear and exit options in gather resources.
-3. Donated now gives items when you claim your loot.
-4. Added 4 more rewards for donate.
-5. Updated save file.
-6. Added quest7 and quest8 to quests. Sorry, I thought I already did this. Apperently not.
-7. Added zinc and cobalt to mining, sell, buy.
-8. Dev_var() function now doesn't display with error messages disabled in settings.
-9. Donate fucntion now doesn't display with error messages disabled in settings.
-10. Save function now notifies user if error message is enabled, if a vars.py file cannot be found. I don't know how you would load the game without it but you know. There's always a way. Actually it's pretty easy. Lmao.
-11. Added zinc and cobalt to inventory/storage
-12. Withdraw now displays correct items stored on inventory/storage
-
-Update 0.1.7
-1. Test all functions for errors and spelling.
+1. Added a help function.
+2. Edited home menu.
+3. Added an option called quick leave. Used to leave a function by key words. Dev access only.
+4. Added 3 more settings in settings.
+5. Updated tips. Added tips for new functions.
+6. Save function now can make a new save file.
+7. On Gather Resources, Change Location, Tips, Sell, Mining, Buy, Cheat Codes, Donate, and Show Inventory. If no input is entered on start then function doesn't display move_on function.
+8. Added an option in inventory to show completed quests.
+9. Added 5 new rewards to donations. You can now earn the right to a cheat by donating.
+10. Added quest9-12 to save function.
+11. Fixed quest8 on quests.
+12. Added 4 more quests to quests.
+13. Adjusted starting values/loot.
+14. Fixed a possible bug in gather resources.
+15. Added go_home var to save function.
+16. Fixed clear() function not working on some platforms. I Made a workaround.
 
 Update 0.1.8
-1. Add new items to tips function.
-2. If user enter "" on a function do not display move_on. Just leave the function.
-3. In inventory add option to show completed quests.
-4. Add 2 more donation rewards.
-5. Add 2 more quests.
-6. Balance out prices and starting loot.
+2. Balance out prices and starting loot.
+3. Allow user to type number or name of function on main menu.
+4. Update tips function.
+5. Allow loop on tips. Will not allow custom loop amount.
+6. Add exit option for loop on tips.
+7. Add some hints in the game.
+8. Add mica and manganese into game.
+
+update 0.1.9:
+1. User can leave a function anytime by typing one of these. go_home=['help','leave','break']
+2. Add setting for user to enable/disable quick leave. Already in vars_beta.py.
+3. Some python running apps don't use os.system('clear').  Make an option to create multiple lines for clearing.
+
+update 0.2.0:
+1. Convert code from python2 to python3
 
 Future updates.
 1. On showing price for buy, keep the price in the same spot if the item qty increases.
