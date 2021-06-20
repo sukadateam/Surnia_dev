@@ -15,4 +15,5 @@ Release Time: 12:30 PM Eastern Daylight Time
 
 
 Next Version: 0.1.8 Test 2
-Game is not fully tested in this version. I used Microsoft Visual Studio Code with python to create this version. I usually create this game in trinket.io. Ps: Trinket.io is a website.
+
+Please note: Game is not fully tested in this version. I used Microsoft Visual Studio Code with python to create this version. I usually create this game in trinket.io. Ps: Trinket.io is a website.
