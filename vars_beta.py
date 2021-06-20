@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 #This page does not get saved with the save function.
 
 #Materials
@@ -10,17 +12,17 @@ clay=10 #lbs
 bowl=10 #Qty
 sticks=10 #Qty
 #Goodies
-coal=0
-iron=0
-gold=0
-diamond=0
-copper=0
-lapiz=0
-zinc=0
-cobalt=0
-lead=0
-mica=0
-manganese=0
+coal=1
+iron=1
+gold=1
+diamond=1
+copper=1
+lapiz=1
+zinc=1
+cobalt=1
+lead=1
+mica=1
+manganese=1
 #Resources that are collected by quests.
 aluminum=0
 silicon=0
@@ -49,7 +51,7 @@ storage_cobalt=0
 self_storage=200 #Qty of items
 home_storage=500 #Qty of items
 #Tools
-pickaxe=3 #Qty, Can be used 1 time
+pickaxe=5 #Qty, Can be used 1 time
 shovel=2 #Qty, Can be used 1 time
 axe=3 #Qty, Can be used 1 time
 #Cords
@@ -83,13 +85,15 @@ sand_biomes=['desert #1','desert #2','desert #3','abandoned city','city #1','cit
 dirt_biomes=['forest #1','forest #2','forest #3']
 #Others
 sides=False
-money=25
+money=125 #Default 125
 stanima=100#Starting Max 100, Default 100
-max_stanima=130#Default 130
-exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']
+max_stanima=100#Default 100
+exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
 donated_money=0
-donated_tf=[0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+go_home=['help','leave','break']
 #Quests
+quest_count=12
 quest1=False
 quest2=False
 quest3=False
@@ -98,6 +102,10 @@ quest5=False
 quest6=False
 quest7=False
 quest8=False
+quest9=False
+quest10=False
+quest11=False
+quest12=False
 #Uses on cheat codes
 cheat_wood_int=0
 cheat_dirt_int=0
@@ -114,6 +122,11 @@ cheat_all=False
 error_message=True
 version=True
 gather_loop=True
+hints=True
+create_new_save=False
+quick_leave=True
+hit_to_exit=False
+normal_clear=True
 
 #First cord = Area, Second cord = Height, Third cord = distance
 #Though all cords = distance
@@ -167,7 +180,7 @@ buy_price_cobalt=6
 # --- CODES IN GAME ---
 dev_options="W3rS3cur3" #In the main menu enter this code to activate.
 cheat_code=""
-cheat_amount=10#The amount to add when using cheat code. #MAX IS 25 items
+cheat_amount=10#The amount to add when using cheat code. #MAX IS5 items
 
 
 
