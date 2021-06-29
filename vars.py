@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 #Materials
 wood=10 #logs
 water=10 #oz
@@ -10,38 +8,38 @@ clay=10 #lbs
 bowl=10 #Qty
 sticks=10 #Qty
 #Goodies
-coal=0
-iron=0
-gold=0
-diamond=0
-copper=0
-lapiz=0
-zinc=0
-cobalt=0
+coal=1
+iron=1
+gold=1
+diamond=1
+copper=1
+lapiz=1
+zinc=1
+cobalt=1
 #Home storage vars
-storage_wood=0
-storage_water=0
-storage_dirt=0
-storage_rocks=0
-storage_clay=0
-storage_bowl=0
-storage_sticks=0
-storage_pickaxe=0
-storage_shovel=0
-storage_axe=0
-storage_coal=0
-storage_iron=0
-storage_gold=0
-storage_diamond=0
-storage_copper=0
-storage_lapiz=0
-storage_zinc=0
-storage_cobalt=0
+storage_wood=5
+storage_water=5
+storage_dirt=5
+storage_rocks=5
+storage_clay=5
+storage_bowl=5
+storage_sticks=5
+storage_pickaxe=5
+storage_shovel=5
+storage_axe=5
+storage_coal=2
+storage_iron=2
+storage_gold=2
+storage_diamond=2
+storage_copper=2
+storage_lapiz=2
+storage_zinc=2
+storage_cobalt=2
 #Storage
-self_storage=200 #Qty of items
+self_storage=300 #Qty of items
 home_storage=500 #Qty of items
 #Tools
-pickaxe=3 #Qty, Can be used 1 time
+pickaxe=5 #Qty, Can be used 1 time
 shovel=2 #Qty, Can be used 1 time
 axe=3 #Qty, Can be used 1 time
 #Cords
@@ -75,12 +73,12 @@ sand_biomes=['desert #1','desert #2','desert #3','abandoned city','city #1','cit
 dirt_biomes=['forest #1','forest #2','forest #3']
 #Others
 sides=False
-money=25 #Default 25
+money=125 #Default 125
 stanima=100 #Starting Max 100, Default 100
-max_stanima=130 #Default 130
-exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃƒÂ³s']
+max_stanima=100 #Default 100
+exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']
 donated_money=0
-donated_tf=[0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
+donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
 go_home=['help','leave','break']
 #Quests
 quest_count=12
@@ -92,6 +90,10 @@ quest5=False
 quest6=False
 quest7=False
 quest8=False
+quest9=False
+quest10=False
+quest11=False
+quest12=False
 #Uses on cheat codes
 cheat_wood_int=0
 cheat_dirt_int=0
@@ -108,9 +110,11 @@ cheat_all=False
 error_message=True
 version=True
 gather_loop=True
+hints_loop=True
 create_new_save=True
 quick_leave=True
 hit_to_exit=False
+normal_clear=False
 
 #Though all cords = distance
 #Lake = 27,0,?
