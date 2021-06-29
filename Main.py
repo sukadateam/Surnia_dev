@@ -1,19 +1,18 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-#Version 0.1.8 Test 1 is out!
+#Version 0.1.8 Test 2 is out!
 import time,os,random
 dev=True#Default False
-break_it=False
+vars_beta='\Users\brobi\Desktop\Surnia\vars_beta.py'
+save='\Users\brobi\vars.py'
+self_int=0
+storage_int=0
 if dev==True:
   from vars_beta import *
 if dev==False:
-  from vars import *
-try:
-  os.system('clear')
-except:
-  normal_clear=False
+  from save import *
 if cheat_amount>25:
-  cheat_amount=25
+  cheat_amount=25 #Max is 25
 if dev==True:
   if set_cheatcode==True:
     cheat_wood=True
@@ -53,6 +52,7 @@ try:
         rocks+=cheat_amount
 except:
   pass
+break_it=False
 def loop1(cords,moving_to):
   global current_location, current_surrounding,time,stanima,dev
   fixed1=0
@@ -292,15 +292,39 @@ def leave(a):
   #    break_it=False
   #    something=1
   #    break
+def self_int1():
+  global self_int
+  global wood,rocks,water,dirt,clay,bowl,sticks,coal,iron,gold,diamond,copper,lapiz,zinc,cobalt
+  self_int=0
+  self_int+=wood+rocks+water+dirt+clay+bowl+sticks
+  self_int+=coal+iron+gold+diamond+copper+lapiz+zinc
+  self_int+=cobalt
+  if dev==True:
+    choice=raw_input('System: Do you want to add extras to self_int:')
+    if choice in "TruetrueyesYes":
+      global silver,silicon,mica,manganese,aluminum,bronze,lead
+      self_int+=silver+silicon+mica+manganese+aluminum+bronze+lead
+def storage_int1():
+  global storage_int
+  storage_int=0
+  storage_int+=storage_water+storage_wood+storage_dirt
+  storage_int+=storage_rocks+storage_clay+storage_bowl
+  storage_int+=storage_sticks+storage_pickaxe+storage_axe
+  storage_int+=storage_shovel+storage_copper+storage_lapiz
+  storage_int+=storage_coal+storage_iron+storage_gold+storage_diamond
+  storage_int+=storage_copper+storage_lapiz+storage_zinc+storage_cobalt
 #move_on=raw_input('Hit enter to exit :')
 p=True
-cheap=False
 while p==True:
   clear()
   if version==True:
-    print 'Current Version: 0.1.8 Test 1'
+    print 'Current Version: 0.1.8 Test 2'
   if dev==True:
     print 'Dev_options: Enabled'
+    if normal_clear==True:
+      print 'Normal_clear: Enabled'
+    if normal_clear==False:
+      print 'Normal_clear: Disabled'
   show_exit=True
   print '(1)Gather Resources'
   print '(2)Change Location'
@@ -330,7 +354,7 @@ while p==True:
     print '\nTo get help type (help)'
   if dev==False:
     print '\n\nTo get help type (help)'
-  choice=raw_input('Choose an option or enter code:')#Do not lowercase
+  choice=raw_input('Choose an option or enter code:') #Do not lowercase
   if choice==dev_options:
     use=False
     if dev==False:
@@ -353,10 +377,12 @@ while p==True:
       loop=False
       warn=False
       loop_count=1
+      ah=False#If user uses quick leave the this var will not allow self_int1() to be used.
       if gather_loop==True:
         print '(1)Loop'
         print '(2)Do not loop'
-        print '\nHint: loop will repeat this function.'
+        if hints==True:
+          print '\nHint: Loop will repeat this function.'
         choice=raw_input('What do you choose:')
         if choice=="":
           if quick_leave==True:
@@ -366,6 +392,7 @@ while p==True:
               clear()
               print 'Quick exit...'
               time.sleep(1)
+              ah=True
         leave(choice)
         if break_it==True:
           break_it=False
@@ -387,11 +414,14 @@ while p==True:
         if choice == "loop":
           loop=True
       clear()
+      if ah==False:
+        self_int1()
       for i in range(int(loop_count)):
-        self_int=0
-        self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-        self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
-        if self_int+1>self_storage:
+        if dev==True:
+          print 'Home var:'
+          print 'Self_int:',self_int
+          print 'Self_storage:',self_storage
+        if int(self_int)+1>int(self_storage):
           warn=True
           break
         if self_int<self_storage+1:
@@ -486,7 +516,7 @@ while p==True:
         print 'Your inventory is full.'
       something=1
       if show_exit==True or hit_to_exit==True:
-        move_on=raw_input('Hit enter to exit crafting:')
+        move_on=raw_input('Hit enter to exit Gather Resources:')
   if choice == "2":
     print 'Current location:',current_surrounding
     print '(1)Lake\n(2)River\n(3)Clay mountian\n(4)Exercise mountian\n(5)Desert\n(6)Abandoned city'
@@ -670,72 +700,96 @@ while p==True:
       time.sleep(1)
     choice = ''
   if choice == "6":
-    print 'Welcome to Brandon\'s game.'
-    print 'For info on each item. Type the items corresponding number.'
-    print '(1)Gather resources'
-    print '(2)Change location'
-    print '(3)Go back home'
-    print '(4)Crafting menu'
-    print '(5)Sleep'
-    print '(6)Tips'
-    print '(7)Exersice'
-    print '(8)Sell'
-    print '(9)Mining'
-    print '(10)Quests'
-    print '(11)Buy'
-    print '(12)Cheat Codes'
-    print '(13)Donate'
-    print '(14)Show inventory'
-    print '(15)Settings'
-    if dev==False:
-      print '\nTo store store items at home. Do this. \n1. Make sure you are at home\n2. Open inventory\n3. Instead of hiting enter to exit type (storage) to store items.\nHint: You can also grab items back from doing this.'
-    choice=raw_input('Which item:')
-    if choice=="":
-      if quick_leave==True:
-        show_exit=False
-        if hints==True:
-          clear()
-          print 'Quick exit...'
-          time.sleep(1)
-          #if show_exit==True or hit_to_exit==True:
-    if choice == "1":
-      print 'This is where you collect resources. You can get these items: Wood, Water, Dirt, Rocks, and sticks.\nHint: Check change location on tips for more info on gathering.'
-    if choice == "2":
-      print 'This is where you move to different areas of the world. Each place allows you to get different items on (gather resources).'
-      print 'Wood: Forest'
-      print 'Water: Lake, River'
-      print 'Dirt: Forest'
-      print 'Rocks: Clay mountian'
-      print 'Sticks: Forest'
-    if choice == "3":
-      print 'This will bring you back home.'
-    if choice == "4":
-      print 'This is where you craft items.'
-    if choice == "5":
-      print 'When your stanima is low, go here to sleep and regain your energy. Maximum Stanima can increase by exercising.'
-    if choice == "6":
-      print 'Well, your already here. I bet you can guess what this is.'
-    if choice == "7":
-      print 'When your stanima doesn\'t go as high as you would like you can exercise to increase you Maximum stanima.'
-    if choice == "8":
-      print 'Have things you don\'t want? Then sell them.'
-    if choice == "9":
-      print 'Grab minerals and sell them for a profit. This does require a pickaxe.'
-    if choice == "10":
-      print 'Complete quests for a reward. Rewards are usually money. Not always.'
-    if choice == "11":
-      print 'Don\'t have things you want? Then buy them.'
-    if choice == "12":
-      print 'Nothing is free in the world not even in game. Cheat Codes gives you free stuff but it may cost money to buy uses on them. You will have to unlock cheat codes by donating.'
-    if choice == "13":
-      print 'Giving to others will lead to others giving to you. To see what you can earn open donate then type rewards.'
-    if choice == "14":
-      print 'Shows what you currently have on you. To access storage, type (storage) instead of hitting enter to exit.'
-    if choice == "15":
-      print 'Change the game up if you want to. Change some settings to your liking. Go ahead, don\'t be shy!'
-    if show_exit==True or hit_to_exit==True:
-      move_on=raw_input('Hit enter to exit tips:')
-    choice = ''
+    repeat=1
+    if hints_loop==True:
+      print '(1)Loop'
+      print '(2)Do not loop'
+      if hints==True:
+        print '\nHint: Loop will repeat this function.'
+      choice=raw_input('What do you choose:')
+      if choice in "loop1" and choice is not "":
+        choice=raw_input('How many times:')
+        try:
+          repeat=int(choice)
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+    for i in range(repeat):
+      print 'Welcome to Brandon\'s game.'
+      print 'For info on each item. Type the items corresponding number.'
+      print '(1)Gather resources'
+      print '(2)Change location'
+      print '(3)Go back home'
+      print '(4)Crafting menu'
+      print '(5)Sleep'
+      print '(6)Tips'
+      print '(7)Exersice'
+      print '(8)Sell'
+      print '(9)Mining'
+      print '(10)Quests'
+      print '(11)Buy'
+      print '(12)Cheat Codes'
+      print '(13)Donate'
+      print '(14)Show inventory'
+      print '(15)Settings'
+      print '(16)Save'
+      if dev==False:
+        print '\nTo store store items at home. Do this. \n1. Make sure you are at home\n2. Open inventory\n3. Instead of hiting enter to exit type (storage) to store items.\nHint: You can also grab items back from doing this.'
+      choice=raw_input('Which item:')
+      clear()
+      if choice=="":
+        if quick_leave==True:
+          show_exit=False
+          if hints==True:
+            print 'Quick exit...'
+            time.sleep(1)
+            break
+            #if show_exit==True or hit_to_exit==True:
+      if choice == "1":
+        print 'This is where you collect resources. You can get these items: Wood, Water, Dirt, Rocks, and sticks.'
+        print 'Hint: Check change location on tips for more info on gathering.'
+        print 'Hint: Quick exit doesn\'t work when in the gathering menu. Only on the loop menu in this function. To exit use the exit command.'
+      if choice == "2":
+        print 'This is where you move to different areas of the world. Each place allows you to get different items on (gather resources).'
+        print 'Wood: Forest'
+        print 'Water: Lake, River'
+        print 'Dirt: Forest'
+        print 'Rocks: Clay mountian'
+        print 'Sticks: Forest'
+      if choice == "3":
+        print 'This will bring you back home.'
+      if choice == "4":
+        print 'This is where you craft items.'
+      if choice == "5":
+        print 'When your stanima is low, go here to sleep and regain your energy. Maximum Stanima can increase by exercising.'
+      if choice == "6":
+        print 'Well, your already here. I bet you can guess what this is.'
+        print 'Hint: Hints setting does nothing on this page. Just a heads up. It\'s kinda needed here.'
+      if choice == "7":
+        print 'When your stanima doesn\'t go as high as you would like you can exercise to increase you Maximum stanima.'
+      if choice == "8":
+        print 'Have things you don\'t want? Then sell them.'
+      if choice == "9":
+        print 'Grab minerals and sell them for a profit. This does require a pickaxe.'
+      if choice == "10":
+        print 'Complete quests for a reward. Rewards are usually money. Not always.'
+      if choice == "11":
+        print 'Don\'t have things you want? Then buy them.'
+      if choice == "12":
+        print 'Nothing is free in the world not even in game. Cheat Codes gives you free stuff but it may cost money to buy uses on them. You will have to unlock cheat codes by donating.'
+      if choice == "13":
+        print 'Giving to others will lead to others giving to you. To see what you can earn open donate then type rewards.'
+      if choice == "14":
+        print 'Shows what you currently have on you. To access storage, type (storage) instead of hitting enter to exit.'
+      if choice == "15":
+        print 'Change the game up if you want to. Change some settings to your liking. Go ahead, don\'t be shy!'
+      if choice == "16":
+        print 'Never loose your progress in the game when you save it. Let\'s go!'
+        print 'Hint: If you want to start over go to settings and toggle (New Save) to Enabled. The save the game. A new save file will be overwriten.'
+      if show_exit==True or hit_to_exit==True:
+        move_on=raw_input('Hit enter to exit tips:')
+      choice = ''
   if choice == "7":
     if current_surrounding=="exercise mountian #1" or dev==True:
       if stanima<30 and dev==False:
@@ -1084,9 +1138,7 @@ while p==True:
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit sell:')
   if choice == "9":
-    self_int=0
-    self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-    self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
+    self_int1()
     if dev==True:
       print 'Inventory capacity:',self_int,'out of',self_storage
     if pickaxe<1 and dev==False:
@@ -1412,9 +1464,7 @@ while p==True:
     move_on=raw_input('Hit enter to exit quest:')
     choice=''
   if choice == "11":
-    self_int=0
-    self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-    self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
+    self_int1()
     if self_int<self_storage+1:
       loop4(s=False,other=False,numbers=False,price=True)
       print 'Storage capacity:'
@@ -2053,17 +2103,8 @@ while p==True:
       clear()
       choice1=''
       choice2=''
-      storage_int=0
-      storage_int+=storage_water+storage_wood+storage_dirt
-      storage_int+=storage_rocks+storage_clay+storage_bowl
-      storage_int+=storage_sticks+storage_pickaxe+storage_axe
-      storage_int+=storage_shovel+storage_copper+storage_lapiz
-      storage_int+=storage_coal+storage_iron+storage_gold+storage_diamond
-      storage_int+=storage_copper+storage_lapiz+storage_zinc+storage_cobalt
-      self_int=0
-      self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-      self_int+=pickaxe+axe+shovel+coal+diamond+iron+gold+copper+lapiz
-      self_int+=zinc+cobalt
+      storage_int1()
+      self_int1()
       if dev==True:
         print 'self_int:',self_int
         print 'storage_int:',storage_int
@@ -2671,26 +2712,30 @@ while p==True:
       print '(3)Gather Resource Loop: Enabled'
     if gather_loop==False:
       print '(3)Gather Resource Loop: Disabled'
+    if hints_loop==True:
+      print '(4)Hints Loop: Enabled'
+    if hints_loop==False:
+      print '(4)Hints Loop: Disabled'
     if hints==True:
-      print '(4)Hints: Enabled'
+      print '(5)Hints: Enabled'
     if hints==False:
-      print '(4)Hints: Disabled'
+      print '(5)Hints: Disabled'
     if create_new_save==True:
-      print '(5)New Save: Enabled'
+      print '(6)New Save: Enabled'
     if create_new_save==False:
-      print '(5)New Save: Disabled'
+      print '(6)New Save: Disabled'
     if quick_leave==True:
-      print '(6)Quick Leave: Enabled'
+      print '(7)Quick Leave: Enabled'
     if quick_leave==False:
-      print '(6)Quick Leave: Disabled'
+      print '(7)Quick Leave: Disabled'
     if hit_to_exit==True:
-      print '(7)Exit Confirm: Enabled'
+      print '(8)Exit Confirm: Enabled'
     if hit_to_exit==False:
-      print '(7)Exit Confirm: Disabled'
+      print '(8)Exit Confirm: Disabled'
     if normal_clear==True:
-      print '(8)Normal Screen Clean: Enabled'
+      print '(9)Normal Screen Clean: Enabled'
     if normal_clear==False:
-      print '(8)Normal Screen Clean: Disabled'
+      print '(9)Normal Screen Clean: Disabled'
     choice=raw_input('Enter number to toggle:')
     if choice == "1":
       hi=True
@@ -2718,13 +2763,21 @@ while p==True:
           gather_loop=True
     if choice == "4":
       hi=True
+      if hints_loop==True:
+        hints_loop=False
+        hi=False
+      if hints_loop==False:
+        if hi==True:
+          hints_loop=True
+    if choice == "5":
+      hi=True
       if hints==True:
         hints=False
         hi=False
       if hints==False:
         if hi==True:
           hints=True
-    if choice == "5":
+    if choice == "6":
       hi=True
       if create_new_save==True:
         create_new_save=False
@@ -2732,7 +2785,7 @@ while p==True:
       if create_new_save==False:
         if hi==True:
           create_new_save=True
-    if choice == "6":
+    if choice == "7":
       hi=True
       if quick_leave==True:
         quick_leave=False
@@ -2740,7 +2793,7 @@ while p==True:
       if quick_leave==False:
         if hi==True:
           quick_leave=True
-    if choice == "7":
+    if choice == "8":
       hi=True
       if hit_to_exit==True:
         hit_to_exit=False
@@ -2748,7 +2801,7 @@ while p==True:
       if hit_to_exit==False:
         if hi==True:
           hit_to_exit=True
-    if choice == "8":
+    if choice == "9":
       hi=True
       if normal_clear==True:
         normal_clear=False
@@ -2757,16 +2810,16 @@ while p==True:
         if hi==True:
           normal_clear=True
   if choice == "save":
-    #save.write('='+str()+'\n')
+    #save.write('='+str()+'\n')`s`
     save_fail=False
     try:
-      save1=file('vars.py','r')
+      save1=file("vars.py",'r')
     except:
         if error_message==True:
           save_fail=True
           print 'System message: ImportError'
           print 'Reason: Cannot find file'
-    save=file('vars.py','w')
+    save=file("vars.py",'w')
     #Writes over existing save file
     if save_fail==False and create_new_save==False:
       save.write('#Materials\n')
@@ -2881,6 +2934,7 @@ while p==True:
       save.write('error_message='+str(error_message)+'\n')
       save.write('version='+str(version)+'\n')
       save.write('gather_loop='+str(gather_loop)+'\n')
+      save.write('hints_loop='+str(hints_loop)+'\n')
       save.write('create_new_save='+str(create_new_save)+'\n')
       save.write('quick_leave='+str(quick_leave)+'\n')
       save.write('hit_to_exit='+str(hit_to_exit)+'\n')
@@ -2956,26 +3010,26 @@ while p==True:
       save.write('zinc=1\n')
       save.write('cobalt=1\n')
       save.write('#Home storage vars\n')
-      save.write('storage_wood=0\n')
-      save.write('storage_water=0\n')
-      save.write('storage_dirt=0\n')
-      save.write('storage_rocks=0\n')
-      save.write('storage_clay=0\n')
-      save.write('storage_bowl=0\n')
-      save.write('storage_sticks=0\n')
-      save.write('storage_pickaxe=0\n')
-      save.write('storage_shovel=0\n')
-      save.write('storage_axe=0\n')
-      save.write('storage_coal=0\n')
-      save.write('storage_iron=0\n')
-      save.write('storage_gold=0\n')
-      save.write('storage_diamond=0\n')
-      save.write('storage_copper=0\n')
-      save.write('storage_lapiz=0\n')
-      save.write('storage_zinc=0\n')
-      save.write('storage_cobalt=0\n')
+      save.write('storage_wood=5\n')
+      save.write('storage_water=5\n')
+      save.write('storage_dirt=5\n')
+      save.write('storage_rocks=5\n')
+      save.write('storage_clay=5\n')
+      save.write('storage_bowl=5\n')
+      save.write('storage_sticks=5\n')
+      save.write('storage_pickaxe=5\n')
+      save.write('storage_shovel=5\n')
+      save.write('storage_axe=5\n')
+      save.write('storage_coal=2\n')
+      save.write('storage_iron=2\n')
+      save.write('storage_gold=2\n')
+      save.write('storage_diamond=2\n')
+      save.write('storage_copper=2\n')
+      save.write('storage_lapiz=2\n')
+      save.write('storage_zinc=2\n')
+      save.write('storage_cobalt=2\n')
       save.write('#Storage\n')
-      save.write('self_storage=200 #Qty of items\n')
+      save.write('self_storage=300 #Qty of items\n')
       save.write('home_storage=500 #Qty of items\n')
       save.write('#Tools\n')
       save.write('pickaxe=5 #Qty, Can be used 1 time\n')
@@ -3049,10 +3103,11 @@ while p==True:
       save.write('error_message=True\n')
       save.write('version=True\n')
       save.write('gather_loop=True\n')
+      save.write('hints_loop=True\n')
       save.write('create_new_save=True\n')
       save.write('quick_leave=True\n')
       save.write('hit_to_exit=False\n')
-      save.write('normal_clear=True')
+      save.write('normal_clear=False\n')
       save.write("\n#Though all cords = distance\n")
       save.write("#Lake = 27,0,?\n")
       save.write("#River = 10,0,?\n")
@@ -3104,26 +3159,28 @@ while p==True:
       save.write('\ncheat_code=""')
       save.write('\ncheat_amount=10 #The amount to add when using cheat code. #MAX IS 25 items')
     save.close()
-    if save_fail==True:
+    if save_fail==True or create_new_save==True:
       print 'Save file created.'
-    if save_fail==False:
+    if save_fail==False and create_new_save==False:
       print 'Save file overwriten.'
     if create_new_save==True:
-      creat_new_save=False
+      create_new_save=False
       print 'New Save set to: False'
+    print 'Save file location:',os.path.abspath('vars.py')
+    if hints==True:
+      print 'Hint: Make sure your save file is located at this location. You may also put the all other game files here.'
     move_on=raw_input('Hit enter to exit save:')
   if choice == "update" or choice == "updates":
-    print "Patch notes for 0.1.7\n"
-    print '1. Donate has 4 more rewards.'
-    print '2. Quest 7 and 8 has been added.'
-    print '3. Added another setting in settings.'
-    print '4. Fixed some saving bugs.'
-    print '5. Added zinc and cobalt to mining, sell, buy.'
-    print '6. Added a hints setting to settings.'
-    print '7. Fixed several bugs.'
-    print '8. Cheat codes now works properly.'
-    print '9. Changed the look and feel on Gather Resources.'
-    print '10. Fixed a few problems with storage.'
+    print "Patch notes for 0.1.8\n"
+    print '1. You can now hold 300 items instead of 200.'
+    print '2. Starting loot is now much higher.'
+    print '3. Made some tweaks for save function capabilites.'
+    print '4. Tips function now has a loop feature.'
+    print '5. Added a few more user settings.'
+    print '6. Gather Resources now obeys hints setting.'
+    print '7. Edited the look and feel of the home menu.'
+    print '8. Added 4 more quests in the game.'
+    print '9. Added some more rewards to donations.'
     move_on=raw_input('Hit enter to exit updates:')
   if choice == "Dev_menu":
     if dev==True:
@@ -3138,75 +3195,165 @@ while p==True:
           choice=raw_input('Choose an option:')
           if choice == "1":
             choice = raw_input('How many:')
-            wood+=int(choice)
+            try:
+              wood+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "2":
             choice = raw_input('How many:')
-            dirt+=int(choice)
+            try:
+              dirt+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "3":
             choice = raw_input('How many:')
-            water+=int(choice)
+            try:
+              water+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "4":
             choice = raw_input('How many:')
-            rocks+=int(choice)
+            try:
+              rocks+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "5":
             choice = raw_input('How many:')
-            clay+=int(choice)
+            try:
+              clay+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "6":
             choice = raw_input('How many:')
-            bowl+=int(choice)
+            try:
+              bowl+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "7":
             choice = raw_input('How many:')
-            sticks+=int(choice)
+            try:
+              sticks+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "8":
             choice = raw_input('How many:')
-            pickaxe+=int(choice)
+            try:
+              pickaxe+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "9":
             choice = raw_input('How many:')
-            shovel+=int(choice)
+            try:
+              shovel+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "10":
             choice = raw_input('How many:')
-            axe+=int(choice)
+            try:
+              axe+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "11":
             choice = raw_input('How many:')
-            coal+=int(choice)
+            try:
+              coal+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "12":
             choice = raw_input('How many:')
-            iron+=int(choice)
+            try:
+              iron+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "13":
             choice = raw_input('How many:')
-            gold+=int(choice)
+            try:
+              gold+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "14":
             choice = raw_input('How many:')
-            diamond+=int(choice)
+            try:
+              diamond+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "15":
             choice = raw_input('How many:')
-            copper+=int(choice)
+            try:
+              copper+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "16":
             choice = raw_input('How many:')
-            lapiz+=int(choice)
+            try:
+              lapiz+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "17":
             choice = raw_input('How many:')
-            zinc+=int(choice)
+            try:
+              zinc+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
           if choice == "18":
             choice = raw_input('How many:')
-            cobalt+=int(choice)
+            try:
+              cobalt+=int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
             choice = ''
         if choice == "2":
           clear()
@@ -3215,221 +3362,382 @@ while p==True:
           if choice == "1":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              wood=0
-            if choice is not "*":
-              if wood==int(choice) or wood>int(choice):
-                wood-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                wood=0
+              if choice is not "*":
+                if wood==int(choice) or wood>int(choice):
+                  wood-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "2":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              dirt=0
-            if choice is not "*":
-              if dirt==int(choice) or dirt>int(choice):
-                dirt-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                dirt=0
+              if choice is not "*":
+                if dirt==int(choice) or dirt>int(choice):
+                  dirt-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "3":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              water=0
-            if choice is not "*":
-              if water==int(choice) or water>int(choice):
-                water-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                water=0
+              if choice is not "*":
+                if water==int(choice) or water>int(choice):
+                  water-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "4":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              rocks=0
-            if choice is not "*":
-              if rocks==int(choice) or rocks>int(choice):
-                rocks-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                rocks=0
+              if choice is not "*":
+                if rocks==int(choice) or rocks>int(choice):
+                  rocks-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "5":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              clay=0
-            if choice is not "*":
-              if clay==int(choice) or clay>int(choice):
-                clay-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                clay=0
+              if choice is not "*":
+                if clay==int(choice) or clay>int(choice):
+                  clay-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "6":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              bowl=0
-            if choice is not "*":
-              if bowl==int(choice) or bowl>int(choice):
-                bowl-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                bowl=0
+              if choice is not "*":
+                if bowl==int(choice) or bowl>int(choice):
+                  bowl-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "7":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              sticks=0
-            if choice is not "*":
-              if sticks==int(choice) or sticks>int(choice):
-                sticks-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                sticks=0
+              if choice is not "*":
+                if sticks==int(choice) or sticks>int(choice):
+                  sticks-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "8":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              pickaxe=0
-            if choice is not "*":
-              if pickaxe==int(choice) or pickaxe>int(choice):
-                pickaxe-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                pickaxe=0
+              if choice is not "*":
+                if pickaxe==int(choice) or pickaxe>int(choice):
+                  pickaxe-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "9":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              shovel=0
-            if choice is not "*":
-              if shovel==int(choice) or shovel>int(choice):
-                shovel-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                shovel=0
+              if choice is not "*":
+                if shovel==int(choice) or shovel>int(choice):
+                  shovel-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "10":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              axe=0
-            if choice is not "*":
-              if axe==int(choice) or axe>int(choice):
-                axe-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                axe=0
+              if choice is not "*":
+                if axe==int(choice) or axe>int(choice):
+                  axe-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "11":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              coal=0
-            if choice is not "*":
-              if coal==int(choice) or coal>int(choice):
-                coal-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                coal=0
+              if choice is not "*":
+                if coal==int(choice) or coal>int(choice):
+                  coal-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "12":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              iron=0
-            if choice is not "*":
-              if iron==int(choice) or iron>int(choice):
-                iron-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                iron=0
+              if choice is not "*":
+                if iron==int(choice) or iron>int(choice):
+                  iron-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "13":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              gold=0
-            if choice is not "*":
-              if gold==int(choice) or gold>int(choice):
-                gold-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                gold=0
+              if choice is not "*":
+                if gold==int(choice) or gold>int(choice):
+                  gold-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "14":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              diamond=0
-            if choice is not "*":
-              if diamond==int(choice) or diamond>int(choice):
-                diamond-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                diamond=0
+              if choice is not "*":
+                if diamond==int(choice) or diamond>int(choice):
+                  diamond-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "15":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              copper=0
-            if choice is not "*":
-              if copper==int(choice) or copper>int(choice):
-                copper-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                copper=0
+              if choice is not "*":
+                if copper==int(choice) or copper>int(choice):
+                  copper-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "16":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              lapiz=0
-            if choice is not "*":
-              if lapiz==int(choice) or lapiz>int(choice):
-                lapiz-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                lapiz=0
+              if choice is not "*":
+                if lapiz==int(choice) or lapiz>int(choice):
+                  lapiz-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "17":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              zinc=0
-            if choice is not "*":
-              if zinc==int(choice) or zinc>int(choice):
-                zinc-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                zinc=0
+              if choice is not "*":
+                if zinc==int(choice) or zinc>int(choice):
+                  zinc-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
           if choice == "18":
             print '(*)Remove all'
             choice = raw_input('How many:')
-            if choice == "*":
-              cobalt=0
-            if choice is not "*":
-              if cobalt==int(choice) or cobalt>int(choice):
-                cobalt-=int(choice)
-              else:
-                print 'You don\'t have enough. Sorry :('
-                time.sleep(1.5)
+            ah=False
+            try:
+              int(choice)
+            except ValueError:
+              if error_message==True:
+                print 'System message: ValueError'
+                print 'Reason: A number was not entered.'
+                ah=True
+            if ah==False:
+              if choice == "*":
+                cobalt=0
+              if choice is not "*":
+                if cobalt==int(choice) or cobalt>int(choice):
+                  cobalt-=int(choice)
+                else:
+                  print 'You don\'t have enough. Sorry :('
+                  time.sleep(1.5)
             choice = ''
         if choice == "3":
-          cheap=True
           price_wood=1
           price_dirt=1
           price_water=1
