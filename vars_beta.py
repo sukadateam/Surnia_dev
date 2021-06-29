@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #This page does not get saved with the save function.
-
+#! = Change and/or add var in save function.
 #Materials
 wood=10 #logs
 water=10 #oz
@@ -29,26 +29,26 @@ silicon=0
 bronze=0
 silver=0
 #Home storage vars
-storage_wood=0
-storage_water=0
-storage_dirt=0
-storage_rocks=0
-storage_clay=0
-storage_bowl=0
-storage_sticks=0
-storage_pickaxe=0
-storage_shovel=0
-storage_axe=0
-storage_coal=0
-storage_iron=0
-storage_gold=0
-storage_diamond=0
-storage_copper=0
-storage_lapiz=0
-storage_zinc=0
-storage_cobalt=0
+storage_wood=5
+storage_water=5
+storage_dirt=5
+storage_rocks=5
+storage_clay=5
+storage_bowl=5
+storage_sticks=5
+storage_pickaxe=5
+storage_shovel=5
+storage_axe=5
+storage_coal=2
+storage_iron=2
+storage_gold=2
+storage_diamond=2
+storage_copper=2
+storage_lapiz=2
+storage_zinc=2
+storage_cobalt=2
 #Storage
-self_storage=200 #Qty of items
+self_storage=300 #Qty of items
 home_storage=500 #Qty of items
 #Tools
 pickaxe=5 #Qty, Can be used 1 time
@@ -122,11 +122,12 @@ cheat_all=False
 error_message=True
 version=True
 gather_loop=True
+hints_loop=True
 hints=True
 create_new_save=False
 quick_leave=True
 hit_to_exit=False
-normal_clear=True
+normal_clear=False
 
 #First cord = Area, Second cord = Height, Third cord = distance
 #Though all cords = distance
@@ -180,7 +181,7 @@ buy_price_cobalt=6
 # --- CODES IN GAME ---
 dev_options="W3rS3cur3" #In the main menu enter this code to activate.
 cheat_code=""
-cheat_amount=10#The amount to add when using cheat code. #MAX IS5 items
+cheat_amount=10#The amount to add when using cheat code. #MAX IS 25 items
 
 
 
