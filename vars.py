@@ -16,6 +16,8 @@ copper=1
 lapiz=1
 zinc=1
 cobalt=1
+mica=1
+manganese=1
 #Home storage vars
 storage_wood=5
 storage_water=5
@@ -35,6 +37,8 @@ storage_copper=2
 storage_lapiz=2
 storage_zinc=2
 storage_cobalt=2
+storage_mica=2
+storage_manganese=2
 #Storage
 self_storage=300 #Qty of items
 home_storage=500 #Qty of items
@@ -80,6 +84,8 @@ exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiós']
 donated_money=0
 donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
 go_home=['help','leave','break']
+repeat_amount=25
+chars_in_line=55
 #Quests
 quest_count=12
 quest1=False #False=Not done
@@ -115,7 +121,7 @@ create_new_save=True
 quick_leave=True
 hit_to_exit=False
 normal_clear=False
-
+run_off=True
 #Though all cords = distance
 #Lake = 27,0,?
 #River = 10,0,?
@@ -144,6 +150,8 @@ price_copper=2
 price_lapiz=3
 price_zinc=3
 price_cobalt=4
+price_mica=4
+price_manganese=5
 
 #Buy prices
 buy_price_wood=3
@@ -164,6 +172,8 @@ buy_price_copper=5
 buy_price_lapiz=6
 buy_price_zinc=5
 buy_price_cobalt=6
+buy_price_mica=6
+buy_price_manganese=7
 
 # --- CODES IN GAME ---
 dev_options='W3rS3cur3' #In the main menu enter this to activate.
