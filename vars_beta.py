@@ -47,6 +47,8 @@ storage_copper=2
 storage_lapiz=2
 storage_zinc=2
 storage_cobalt=2
+storage_mica=2
+storage_manganese=2
 #Storage
 self_storage=300 #Qty of items
 home_storage=500 #Qty of items
@@ -92,6 +94,8 @@ exit_pos=['bye','goodbye','exit','leave','moving on','adios','adiÃ³s']
 donated_money=0
 donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards
 go_home=['help','leave','break']
+repeat_amount=25
+chars_in_line=55
 #Quests
 quest_count=12
 quest1=False
@@ -128,6 +132,7 @@ create_new_save=False
 quick_leave=True
 hit_to_exit=False
 normal_clear=False
+run_off=True
 
 #First cord = Area, Second cord = Height, Third cord = distance
 #Though all cords = distance
@@ -158,6 +163,8 @@ price_copper=2
 price_lapiz=3
 price_zinc=3
 price_cobalt=4
+price_mica=4
+price_manganese=5
 
 #Buy prices
 buy_price_wood=3
@@ -178,6 +185,8 @@ buy_price_copper=5
 buy_price_lapiz=6
 buy_price_zinc=5
 buy_price_cobalt=6
+buy_price_mica=6
+buy_price_manganese=7
 # --- CODES IN GAME ---
 dev_options="W3rS3cur3" #In the main menu enter this code to activate.
 cheat_code=""
