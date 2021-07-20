@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-#Version 0.1.8 Test 2 is out!
-import time,os,random
+#Version 0.1.8 Test 3 is out!
+import time,os,random,math
 dev=True#Default False
 vars_beta='\Users\brobi\Desktop\Surnia\vars_beta.py'
 save='\Users\brobi\vars.py'
@@ -101,75 +101,82 @@ def loop2():
     sides=True
 def loop4(s,other,numbers,price):
   #s = (True)Shows other stuff and stats
-  global dirt,wood,rocks,water,clay,bowl,sticks
   global self_storage,home_storage,stanima,max_stanima
   global current_surronding,current_location
-  global pickaxe,axe,shovel,diamond,coal,iron,gold
   side='  ()'
   side1=1
+  global axe,pickaxe,shovel
+  global wood,rocks,water,dirt,clay,bowl,sticks,coal,iron,gold,diamond,copper,lapiz,zinc,cobalt,mica,manganese
   self_int=0
-  self_int+=wood+water+dirt+rocks+clay+bowl+sticks
-  self_int+=pickaxe+axe+shovel+diamond+coal+iron+gold
+  self_int+=wood+rocks+water+dirt+clay+bowl+sticks
+  self_int+=coal+iron+gold+diamond+copper+lapiz+zinc
+  self_int+=cobalt+mica+manganese+axe+pickaxe+shovel
   print 'Minerals:'
   if price==True:
     print '      Item      Price for one'
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Wood:',str(wood)+',     Price:',buy_price_wood
+    print side2+'Wood:',str(wood)+',      Price:',buy_price_wood
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Dirt:',str(dirt)+',     Price:',buy_price_dirt
+    print side2+'Dirt:',str(dirt)+',      Price:',buy_price_dirt
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Water:',str(water)+',    Price:',buy_price_water
+    print side2+'Water:',str(water)+',     Price:',buy_price_water
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Rocks:',str(rocks)+',    Price:',buy_price_rocks
+    print side2+'Rocks:',str(rocks)+',     Price:',buy_price_rocks
     print 'Items:'
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Clay:',str(clay)+',     Price:',buy_price_clay
+    print side2+'Clay:',str(clay)+',      Price:',buy_price_clay
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Bowls:',str(bowl)+',    Price:',buy_price_bowl
+    print side2+'Bowls:',str(bowl)+',     Price:',buy_price_bowl
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Sticks:',str(sticks)+',   Price:',buy_price_sticks
+    print side2+'Sticks:',str(sticks)+',    Price:',buy_price_sticks
     print 'Tools:'
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Pickaxes:',str(pickaxe)+',  Price:',buy_price_pickaxe
+    print side2+'Pickaxes:',str(pickaxe)+',   Price:',buy_price_pickaxe
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Shovels:',str(shovel)+',   Price:',buy_price_shovel
+    print side2+'Shovels:',str(shovel)+',    Price:',buy_price_shovel
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Axes:',str(axe)+',     Price:',buy_price_axe
+    print side2+'Axes:',str(axe)+',      Price:',buy_price_axe
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
     print 'Goodies:'
-    print side2+'Coal:',str(coal)+',     Price:',buy_price_coal
+    print side2+'Coal:',str(coal)+',      Price:',buy_price_coal
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Iron:',str(iron)+',     Price:',buy_price_iron
+    print side2+'Iron:',str(iron)+',      Price:',buy_price_iron
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Gold:',str(gold)+',     Price:',buy_price_gold
+    print side2+'Gold:',str(gold)+',      Price:',buy_price_gold
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Diamonds:',str(diamond)+', Price:',buy_price_diamond
+    print side2+'Diamonds:',str(diamond)+',  Price:',buy_price_diamond
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Copper:',str(copper)+',   Price:',buy_price_copper
+    print side2+'Copper:',str(copper)+',    Price:',buy_price_copper
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Lapiz:',str(lapiz)+'     Price:',buy_price_lapiz
+    print side2+'Lapiz:',str(lapiz)+',     Price:',buy_price_lapiz
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Zinc:',str(zinc)+'     Price:',buy_price_zinc
+    print side2+'Zinc:',str(zinc)+',      Price:',buy_price_zinc
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Cobalt:',str(zinc)+'    Price:',buy_price_cobalt
+    print side2+'Cobalt:',str(zinc)+',    Price:',buy_price_cobalt
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Mica:',str(mica)+',      Price:',buy_price_mica
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Manganese:',str(mica)+', Price:',buy_price_manganese
   if numbers==True:
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
@@ -227,7 +234,13 @@ def loop4(s,other,numbers,price):
     print side2+'Zinc:',zinc,'(lbs)'
     side2=side[:3]+str(side1)+side[3:]
     side1+=1
-    print side2+'Cobalt',cobalt,'(lbs)'
+    print side2+'Cobalt:',cobalt,'(lbs)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Mica:',mica,'(lbs)'
+    side2=side[:3]+str(side1)+side[3:]
+    side1+=1
+    print side2+'Manganese:',manganese,'(lbs)'
   if numbers==False:
     if price==False:
       print '  Wood:',wood,'(logs)'
@@ -252,6 +265,8 @@ def loop4(s,other,numbers,price):
     print '  Lapiz:',lapiz,'(lbs)'
     print '  Zinc:',zinc,'(lbs)'
     print '  Cobalt:',cobalt,'(lbs)'
+    print '  Mica:',mica,'(lbs)'
+    print '  Manganese',manganese,'(lbs)'
   if s==True:
     print 'Storage:'
     print '  Inventory Storage:',self_storage,'(qty of items)'
@@ -266,11 +281,11 @@ def loop4(s,other,numbers,price):
     print 'Current area:',current_surrounding
     print 'Current cordinates:',current_location
 def clear():
-  global normal_clear
+  global normal_clear,repeat_amount
   if normal_clear==True:
     os.system('clear')
   if normal_clear==False:
-    for i in range(25):
+    for i in range(repeat_amount):
       print ''
 def dev_promt():
   print 'You must activate Dev_options to use this. This lock will be removed in future updates. Go to vars.py to see how to enable dev_options. It\'s at the bottom.'
@@ -294,18 +309,19 @@ def leave(a):
   #    break
 def self_int1():
   global self_int
-  global wood,rocks,water,dirt,clay,bowl,sticks,coal,iron,gold,diamond,copper,lapiz,zinc,cobalt
+  global wood,rocks,water,dirt,clay,bowl,sticks,coal,iron,gold,diamond,copper,lapiz,zinc,cobalt,mica,manganese
+  global axe,pickaxe,shovel
   self_int=0
   self_int+=wood+rocks+water+dirt+clay+bowl+sticks
   self_int+=coal+iron+gold+diamond+copper+lapiz+zinc
-  self_int+=cobalt
+  self_int+=cobalt+mica+manganese+axe+pickaxe+shovel
   if dev==True:
     choice=raw_input('System: Do you want to add extras to self_int:')
     if choice in "TruetrueyesYes":
-      global silver,silicon,mica,manganese,aluminum,bronze,lead
-      self_int+=silver+silicon+mica+manganese+aluminum+bronze+lead
+      global silver,silicon,aluminum,bronze,lead
+      self_int+=silver+silicon+aluminum+bronze+lead
 def storage_int1():
-  global storage_int
+  globals
   storage_int=0
   storage_int+=storage_water+storage_wood+storage_dirt
   storage_int+=storage_rocks+storage_clay+storage_bowl
@@ -313,65 +329,93 @@ def storage_int1():
   storage_int+=storage_shovel+storage_copper+storage_lapiz
   storage_int+=storage_coal+storage_iron+storage_gold+storage_diamond
   storage_int+=storage_copper+storage_lapiz+storage_zinc+storage_cobalt
+  storage_int+=storage_mica+storage_manganese
+def screen_runoff(line_space):
+  global run_off
+  if run_off==True:
+    ch_per_line=7
+    p=len(line_space)
+    round(p)
+    a=int(0)
+    b=int(chars_in_line)
+    while p>0:
+      try:
+        #print avalable
+        if line_space[a]==" ":
+          bg=line_space[a+1:b]
+        if line_space[a] is not " ":
+          bg=line_space[a:b]
+        #print
+        print (bg)
+        a+=chars_in_line
+        b+=chars_in_line
+        p-=1
+      except IndexError:
+        break
 #move_on=raw_input('Hit enter to exit :')
 p=True
+first=True
 while p==True:
-  clear()
+  if first==False:
+    clear()
+  if first==True:
+    first=False
+    print ''
   if version==True:
-    print 'Current Version: 0.1.8 Test 2'
+    screen_runoff('Current Version: 0.1.8 Test 3')
   if dev==True:
-    print 'Dev_options: Enabled'
+    screen_runoff('Dev_options: Enabled')
     if normal_clear==True:
-      print 'Normal_clear: Enabled'
+      screen_runoff('Normal_clear: Enabled')
     if normal_clear==False:
-      print 'Normal_clear: Disabled'
+      screen_runoff('Normal_clear: Disabled')
   show_exit=True
-  print '(1)Gather Resources'
-  print '(2)Change Location'
-  print '(3)Go Back Home'
-  print '(4)Crafting Menu'
-  print '(5)Sleep'
-  print '(6)Tips'
-  print '(7)Exersice'
-  print '(8)Sell'
-  print '(9)Mining'
-  print '(10)Quests'
-  print '(11)Buy'
-  print '(12)Cheat Codes'
-  print '(13)Donate'
-  print '(*)Show Inventory'
-  print '(@)Settings'
-  print '\nOthers:'
-  print ' (save)Save Data'
-  print ' (bye)Exit'
-  print ' (updates)Show Patch Notes'
-  print ' (help)What do I do?'
+  screen_runoff('(1)Gather Resources')
+  screen_runoff('(2)Change Location')
+  screen_runoff('(3)Go Back Home')
+  screen_runoff('(4)Crafting Menu')
+  screen_runoff('(5)Sleep')
+  screen_runoff('(6)Tips')
+  screen_runoff('(7)Exersice')
+  screen_runoff('(8)Sell')
+  screen_runoff('(9)Mining')
+  screen_runoff('(10)Quests')
+  screen_runoff('(11)Buy')
+  screen_runoff('(12)Cheat Codes')
+  screen_runoff('(13)Donate')
+  screen_runoff('(*)Show Inventory')
+  screen_runoff('(@)Settings')
+  screen_runoff('\nOthers:')
+  screen_runoff(' (save)Save Data')
+  screen_runoff(' (bye)Exit')
+  screen_runoff(' (updates)Show Patch Notes')
+  screen_runoff(' (help)What do I do?')
   if dev==True:
-    print 'Dev tools:'
-    print ' Dev_menu()'
-    print ' Dev_var()'
-    print ' Vars_beta()'
-    print '\nTo get help type (help)'
+    screen_runoff('Dev tools:')
+    screen_runoff(' Dev_menu()')
+    screen_runoff(' Dev_var()')
+    screen_runoff(' Vars_beta()')
+    screen_runoff('\nTo get help type (help)')
   if dev==False:
-    print '\n\nTo get help type (help)'
+    screen_runoff('\n\nTo get help type (help)')
   choice=raw_input('Choose an option or enter code:') #Do not lowercase
   if choice==dev_options:
     use=False
     if dev==False:
-      print 'Dev_options: Enabled'
+      screen_runoff('Dev_options: Enabled')
       dev=True
       use=True
     if use==False:
       if dev==True:
-        print 'Dev_options: Disabled'
+        screen_runoff('Dev_options: Disabled')
         dev=False
     time.sleep(1)
   clear()
   loop2()
   if choice == "help":
-    print 'Enter the items corresponding character to select an item. Characters include but not limited to letters, number and/or symbols.\n'
+    screen_runoff('Enter the items corresponding character to select an item. Characters include but not limited to letters, number and/or symbols.\n')
     move_on=raw_input('Hit enter to exit help:')
-  if choice == "1":
+  if choice == "1" or choice.lower() == "gather resources":
     something=0
     while something<1:
       loop=False
@@ -379,10 +423,10 @@ while p==True:
       loop_count=1
       ah=False#If user uses quick leave the this var will not allow self_int1() to be used.
       if gather_loop==True:
-        print '(1)Loop'
-        print '(2)Do not loop'
+        screen_runoff('(1)Loop')
+        screen_runoff('(2)Do not loop')
         if hints==True:
-          print '\nHint: Loop will repeat this function.'
+          screen_runoff('\nHint: Loop will repeat this function.')
         choice=raw_input('What do you choose:')
         if choice=="":
           if quick_leave==True:
@@ -390,7 +434,7 @@ while p==True:
             loop_count=0
             if hints==True:
               clear()
-              print 'Quick exit...'
+              screen_runoff('Quick exit...')
               time.sleep(1)
               ah=True
         leave(choice)
@@ -409,25 +453,27 @@ while p==True:
             loop_count=int(loop_count)
           except ValueError:
             if error_message==True:
-              print 'System message: ValueError'
-              print 'Reason: A number was not entered.'
+              screen_runoff('System message: ValueError')
+              screen_runoff('Reason: A number was not entered.')
         if choice == "loop":
           loop=True
       clear()
       if ah==False:
         self_int1()
       for i in range(int(loop_count)):
-        if dev==True:
-          print 'Home var:'
-          print 'Self_int:',self_int
-          print 'Self_storage:',self_storage
         if int(self_int)+1>int(self_storage):
           warn=True
           break
         if self_int<self_storage+1:
           #Water + Dirt = Clay
           #Wood = house, water holder, storage
-          print '(1)Wood\n(2)Water\n(3)Dirt\n(4)Rocks\n(5)Sticks\n(*)Exit\n(os)Clear Text'
+          screen_runoff('(1)Wood')
+          screen_runoff('(2)Water')
+          screen_runoff('(3)Dir')
+          screen_runoff('(4)Rocks')
+          screen_runoff('(5)Sticks')
+          screen_runoff('(*)Exit')
+          screen_runoff('(os)Clear Text')
           choice=raw_input('What would you like to gather:')
           leave(choice)
           if break_it==True:
@@ -442,32 +488,32 @@ while p==True:
           if choice == "1":
             if dev==False:
               if current_surrounding not in dirt_biomes:
-                print 'You must be in the forest to gather sticks.'
+                screen_runoff('You must be in the forest to gather sticks.')
             if current_surrounding in dirt_biomes or dev==True:
               if self_storage<self_int+3:
-                print 'Your inventory is full.'
+                screen_runoff('Your inventory is full.')
                 choice='blah'
               if choice == "1":
                 if axe>0:
-                  print 'Gathering wood...'
+                  screen_runoff('Gathering wood...')
                   time.sleep(3)
                   wood+=2
-                  print 'Gathered 2 wood'
+                  screen_runoff('Gathered 2 wood')
                   time.sleep(1)
                 if axe<1:
-                  print 'You need more axe(s)'
+                  screen_runoff('You need more axe(s)')
           if choice == "2":
             if dev==False:
               if current_surrounding not in water_biomes:
-                print 'You need to be near a lake or a river to gather water.'
+                screen_runoff('You need to be near a lake or a river to gather water.')
             if current_surrounding in water_biomes or dev==True:
               if self_storage<self_int+2:
                 choice='blah'
               if choice == "2":
-                print 'Gathering water...'
+                screen_runoff('Gathering water...')
                 time.sleep(3)
                 water+=1
-                print 'Gathered 1 water'
+                screen_runoff('Gathered 1 water')
                 time.sleep(1)
           if choice == "3":
             if current_surrounding in dirt_biomes or dev==True:
@@ -475,51 +521,56 @@ while p==True:
                 choice='blah'
               if choice == "3":
                 if shovel>0:
-                  print 'Gathering dirt...'
+                  screen_runoff('Gathering dirt...')
                   time.sleep(3)
                   dirt+=1
-                  print 'Gathered 1 dirt'
+                  screen_runoff('Gathered 1 dirt')
                   time.sleep(1)
                 if shovel<1:
-                  print 'You need more shovel(s)'
+                  screen_runoff('You need more shovel(s)')
             if dev==False:
               if current_surrounding not in dirt_biomes:
-                print 'You must be in the forest to gather dirt.'
+                screen_runoff('You must be in the forest to gather dirt.')
           if choice == "4":
             if current_surrounding in clay_biomes or current_surrounding in dirt_biomes or dev==True:
               if self_storage<self_int+2:
                 choice = 'blah'
               if choice == "4":
-                print 'Gathering rocks...'
+                screen_runoff('Gathering rocks...')
                 time.sleep(3)
                 rocks+=2
-                print 'Gathered 2 rocks.'
+                screen_runoff('Gathered 2 rocks.')
                 time.sleep(1)
             if dev==False:
               if current_surrounding not in clay_biomes or dirt_biomes:
-                print 'You must at clay mountian or the forest to gather rocks.'
+                screen_runoff('You must at clay mountian or the forest to gather rocks.')
           if choice == "5":
             if current_surrounding in dirt_biomes or dev==True:
               if self_storage<self_int+1:
                 choice="blah"
               if choice == "5":
-                print 'Gathering sticks...'
+                screen_runoff('Gathering sticks...')
                 time.sleep(3)
                 sticks+=4
-                print 'Gathered 4 sticks.'
+                screen_runoff('Gathered 4 sticks.')
                 time.sleep(1)
             if dev==False:
               if current_surrounding not in dirt_biomes:
-                print 'You must be in the forest to gather sticks.'
+                screen_runoff('You must be in the forest to gather sticks.')
       choice=''
       if warn==True:
-        print 'Your inventory is full.'
+        screen_runoff('Your inventory is full.')
       something=1
       if show_exit==True or hit_to_exit==True:
         move_on=raw_input('Hit enter to exit Gather Resources:')
-  if choice == "2":
-    print 'Current location:',current_surrounding
-    print '(1)Lake\n(2)River\n(3)Clay mountian\n(4)Exercise mountian\n(5)Desert\n(6)Abandoned city'
+  if choice == "2" or choice.lower() == "change location":
+    screen_runoff('Current location:',current_surrounding)
+    screen_runoff('(1)Lake')
+    screen_runoff('(2)River')
+    screen_runoff('(3)Clay mountian')
+    screen_runoff('(4)Exercise mountian')
+    screen_runoff('(5)Desert')
+    screen_runoff('(6)Abandoned city')
     choice = raw_input('Where would you like to go:')
     loop2()
     if choice == "1":
@@ -565,119 +616,119 @@ while p==True:
       if hi==3:
         loop1(city3_cords,'city #3')
     choice = ''
-  if choice == "3":
+  if choice == "3" or choice.lower() == "go back home":
     loop1(home_location,'home')
     choice = ''
-  if choice == "4":
-    print '(1)Clay     Needs - Dirt:1 Water:1'
-    print '(2)Bowl     Needs - Wood:2'
-    print '(3)Sticks   Needs - Wood:1'
-    print '(4)Pickaxe  Needs - Sticks:2 Rocks:3'
-    print '(5)Shovel   Needs - Sticks:2 Rocks:1'
-    print '(6)Axe      Needs - Sticks:2 Rocks:2'
+  if choice == "4" or choice.lower() == "crafting menu":
+    screen_runoff('(1)Clay     Needs - Dirt:1 Water:1')
+    screen_runoff('(2)Bowl     Needs - Wood:2')
+    screen_runoff('(3)Sticks   Needs - Wood:1')
+    screen_runoff('(4)Pickaxe  Needs - Sticks:2 Rocks:3')
+    screen_runoff('(5)Shovel   Needs - Sticks:2 Rocks:1')
+    screen_runoff('(6)Axe      Needs - Sticks:2 Rocks:2')
     choice = raw_input('What would you like to make:')
     if choice=="":
       if quick_leave==True:
         show_exit=False
         if hints==True:
           clear()
-          print 'Quick exit...'
+          screen_runoff('Quick exit...')
           time.sleep(1)
     loop2()
     if choice == "1":
       if dirt>0:
         if water>0:
-          print 'Making clay...'
+          screen_runoff('Making clay...')
           time.sleep(2)
-          print 'Made 1 clay'
+          screen_runoff('Made 1 clay')
           clay+=1
           dirt-=1
           water-=1
-          print 'You have',clay,'clay'
+          screen_runoff('You have '+str(clay)+' clay')
       if dirt<1:
-        print 'You need more dirt'
-        print 'You have',dirt,'dirt'
+        screen_runoff('You need more dirt')
+        screen_runoff('You have '+str(dirt)+' dirt')
       if water<1:
-        print 'You need more water'
-        print 'You have',water,'water'
+        screen_runoff('You need more water')
+        screen_runoff('You have '+str(water)+' water')
       move_on=raw_input('Hit enter to exit crafting:')
     if choice == "2":
       if wood>1:
-        print 'Making a bowl...'
+        screen_runoff('Making a bowl...')
         time.sleep(2)
-        print 'Made 1 bowl'
+        screen_runoff('Made 1 bowl')
         bowl+=1
         wood-=2
-        print 'You have',bowl,'bowl(s)'
+        screen_runoff('You have '+str(bowl)+' bowl(s)')
       if wood<2:
-        print 'You need more wood'
-        print 'You have',wood,'wood'
+        screen_runoff('You need more wood')
+        screen_runoff('You have '+str(wood)+' wood')
       move_on=raw_input('Hit enter to exit crafting:')
     if choice == "3":
       if wood>0:
-        print 'Making sticks...'
+        screen_runoff('Making sticks...')
         time.sleep(2)
-        print 'Made 4 sticks.'
+        screen_runoff('Made 4 sticks.')
         sticks+=4
         wood-=1
-        print 'You have',sticks,'stick(s)'
+        screen_runoff('You have '+str(sticks)+' stick(s)')
       if wood<1:
-        print 'You need more wood'
-        print 'You have',wood,'wood'
+        screen_runoff('You need more wood')
+        screen_runoff('You have '+str(wood)+' wood')
       move_on=raw_input('Hit enter to exit crafting:')
     if choice == "4":
       if sticks>1:
         if rocks>2:
-          print 'Making a pickaxe...'
+          screen_runoff('Making a pickaxe...')
           time.sleep(2)
-          print 'Made 1 pickaxe.'
+          screen_runoff('Made 1 pickaxe.')
           pickaxe+=1
           sticks-=2
           rocks-=3
-          print 'You have',pickaxe,'pickaxe(s)'
+          screen_runoff('You have '+str(pickaxe)+' pickaxe(s)')
       if sticks<2:
-        print 'You need more sticks.'
-        print 'You have',sticks,'sticks'
+        screen_runoff('You need more sticks.')
+        screen_runoff('You have '+str(sticks)+' sticks')
       if rocks<3:
-        print 'You need more rocks'
-        print 'You have',rocks,'rocks'
+        screen_runoff('You need more rocks')
+        screen_runoff('You have '+str(rocks)+' rocks')
       move_on=raw_input('Hit enter to exit crafting:')
     if choice == "5":
       if sticks>1:
         if rocks>0:
-          print 'Making a shovel...'
+          screen_runoff('Making a shovel...')
           time.sleep(2)
-          print 'Made 1 shovel.'
+          screen_runoff('Made 1 shovel.')
           shovel+=1
           sticks-=2
           rocks-=1
-          print 'You have',shovel,'shovel(s)'
+          screen_runoff('You have '+str(shovel)+' shovel(s)')
       if sticks<2:
-        print 'You need more sticks.'
-        print 'You have',sticks,'sticks'
+        screen_runoff('You need more sticks.')
+        screen_runoff('You have '+str(sticks)+' sticks')
       if rocks<1:
-        print 'You need more rocks'
-        print 'You have',rocks,'rocks'
+        screen_runoff('You need more rocks')
+        screen_runoff('You have '+str(rocks)+' rocks')
       move_on=raw_input('Hit enter to exit crafting:')
     if choice == "6":
       if sticks>1:
         if rocks>1:
-          print 'Making a axe...'
+          screen_runoff('Making a axe...')
           time.sleep(2)
-          print 'Made 1 axe.'
+          screen_runoff('Made 1 axe.')
           axe+=1
           sticks-=2
           rocks-=2
-          print 'You have',axe,'axe(s)'
+          screen_runoff('You have '+str(axe)+' axe(s)')
       if sticks<2:
-        print 'You need more sticks.'
-        print 'You have',sticks,'sticks'
+        screen_runoff('You need more sticks.')
+        screen_runoff('You have '+str(sticks)+' sticks')
       if rocks<2:
-        print 'You need more rocks'
-        print 'You have',rocks,'rocks'
+        screen_runoff('You need more rocks')
+        screen_runoff('You have '+str(rocks)+' rocks')
       move_on=raw_input('Hit enter to exit crafting:')
     choice = ''
-  if choice == "5":
+  if choice == "5" or choice.lower() == "sleep":
     if dev==False:
       if stanima+1>max_stanima:
         print 'You are not tired.'
@@ -699,7 +750,7 @@ while p==True:
       print 'Stanima reset to max.'
       time.sleep(1)
     choice = ''
-  if choice == "6":
+  if choice == "6" or choice.lower() == "tips":
     repeat=1
     if hints_loop==True:
       print '(1)Loop'
@@ -790,7 +841,7 @@ while p==True:
       if show_exit==True or hit_to_exit==True:
         move_on=raw_input('Hit enter to exit tips:')
       choice = ''
-  if choice == "7":
+  if choice == "7" or choice.lower() == "exersice":
     if current_surrounding=="exercise mountian #1" or dev==True:
       if stanima<30 and dev==False:
         print 'You are to tired to dance your heart away.'
@@ -818,7 +869,7 @@ while p==True:
     if current_surrounding is not "exercise mountian #1":
       print 'You need to travel to exersice mountian to use this function.'
     move_on=raw_input('Hit enter to exit exercise:')
-  if choice == "8":
+  if choice == "8" or choice.lower() == "sell":
     clear()
     loop4(s=False,other=False,numbers=True,price=False)
     choice=raw_input('What would you like to sell:')
@@ -1135,9 +1186,43 @@ while p==True:
               print 'System message: ValueError'
               print 'Reason: A number was not entered.'
       choice=''
+    if choice=="19":
+      if mica<1:
+        print 'You don\'t have any to sell'
+      if mica>0:
+        choice=raw_input('How many:')
+        try:
+          if mica==int(choice) or mica>int(choice):
+            money+=int(choice)*price_mica
+            mica-=int(choice)
+            print 'Current holdings:'
+            print 'Cents:',money
+            print 'Mica:',mica
+        except ValueError:
+          if error_message==True:
+              print 'System message: ValueError'
+              print 'Reason: A number was not entered.'
+      choice=''
+    if choice=="20":
+      if manganese<1:
+        print 'You don\'t have any to sell'
+      if manganese>0:
+        choice=raw_input('How many:')
+        try:
+          if manganese==int(choice) or manganese>int(choice):
+            money+=int(choice)*price_manganese
+            manganese-=int(choice)
+            print 'Current holdings:'
+            print 'Cents:',money
+            print 'Manganese:',manganese
+        except ValueError:
+          if error_message==True:
+              print 'System message: ValueError'
+              print 'Reason: A number was not entered.'
+      choice=''
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit sell:')
-  if choice == "9":
+  if choice == "9" or choice.lower() == "mining":
     self_int1()
     if dev==True:
       print 'Inventory capacity:',self_int,'out of',self_storage
@@ -1247,7 +1332,7 @@ while p==True:
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit mining:')
     choice = ''
-  if choice == "10":
+  if choice == "10" or choice.lower() == "quests" or choice.lower() == "quest":
     hi=True
     if sticks<5:
       print 'Sorry, but you do not. Come back when you do.'
@@ -1463,13 +1548,13 @@ while p==True:
                 print 'You have completed all of the quests.'
     move_on=raw_input('Hit enter to exit quest:')
     choice=''
-  if choice == "11":
+  if choice == "11" or choice.lower() == "buy":
     self_int1()
     if self_int<self_storage+1:
       loop4(s=False,other=False,numbers=False,price=True)
       print 'Storage capacity:'
-      print '  (19)More inventory storage'
-      print '  (20)More home storage'
+      print '  (21)More inventory storage'
+      print '  (22)More home storage'
       choice=raw_input('What would you like to buy:')
       if choice=="":
         if quick_leave==True:
@@ -1766,6 +1851,38 @@ while p==True:
             print 'System message: ValueError'
             print 'Reason: A number was not entered.'
       if choice == "19":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_mica*int(choice):
+            money-=buy_price_mica*int(choice)
+            mica+=int(choice)
+            print 'You now have:',mica
+          if money<buy_price_mica*int(choice):
+            print 'You don\'t have enough Cents'
+            print 'Total asked:',choice,'mica'
+            print 'Total cost:',buy_price_mica*int(choice),'Cents'
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+      if choice == "20":
+        choice = raw_input('How many:')
+        clear()
+        try:
+          if money+1>buy_price_manganese*int(choice):
+            money-=buy_price_manganese*int(choice)
+            manganese+=int(choice)
+            print 'You now have:',manganese
+          if money<buy_price_manganese*int(choice):
+            print 'You don\'t have enough Cents'
+            print 'Total asked:',choice,'manganese'
+            print 'Total cost:',buy_price_manganese*int(choice),'Cents'
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+      if choice == "21":
         print 'Price: 1 item = 3 Cents'
         try:
           choice = raw_input('How much more storage:')
@@ -1779,7 +1896,7 @@ while p==True:
           if error_message==True:
             print 'System message: ValueError'
             print 'Reason: A number was not entered.'
-      if choice == "20":
+      if choice == "22":
         print 'Price: 1 item = 5 Cents'
         try:
           choice = raw_input('How much more storage:')
@@ -1798,7 +1915,7 @@ while p==True:
       print 'Your inventory is at capacity.'
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit buy:')
-  if choice == "12":
+  if choice == "12" or choice.lower() == "cheat codes":
     print 'Here are cheat code you can buy. Each can be used 2 times. You can buy as many as you want!'
     print '(1)Wood cheat code:  30 cents'
     print '(1)Dirt cheat code:  15 cents'
@@ -1938,7 +2055,7 @@ while p==True:
       print '\nHint: To see cheat codes go to inventory the type cheats.'
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit cheat codes:')
-  if choice == "13":
+  if choice == "13" or choice.lower() == "donate":
     print 'To see reward list: rewards'
     print 'To donate: donate'
     print 'To claim rewards: claim'
@@ -2057,7 +2174,7 @@ while p==True:
   if choice in exit_pos:
     print 'Goodbye.'
     p=False
-  if choice == "*":
+  if choice == "*" or choice.lower() == "inventory":
     loop4(s=True,other=True,numbers=False,price=False)
     print '\nOptions: (storage), (leave) or (cheats)'
     print '         (quests)'
@@ -2699,7 +2816,7 @@ while p==True:
     choice = ''
     if show_exit==True or hit_to_exit==True:
       move_on=raw_input('Hit enter to exit storage:')
-  if choice == "@":
+  if choice == "@" or choice.lower() == "settings":
     if error_message==True:
       print '(1)Error Messages: Enabled'
     if error_message==False:
@@ -2733,9 +2850,16 @@ while p==True:
     if hit_to_exit==False:
       print '(8)Exit Confirm: Disabled'
     if normal_clear==True:
-      print '(9)Normal Screen Clean: Enabled'
+      print '(9)Normal Screen Clean: Clear'
     if normal_clear==False:
-      print '(9)Normal Screen Clean: Disabled'
+      print '(9)Normal Screen Clean: Print Repeat'
+    if run_off==True:
+      print '(10)Screen Run Off Value:',chars_in_line,', Enabled'
+    if run_off==False:
+      print '(10)Screen Run Off Value:',chars_in_line,', Disabled'
+    print 'Print Repeat Info:'
+    print ' Current Value:',repeat_amount
+    print '(*)Change Print Repeat Value'
     choice=raw_input('Enter number to toggle:')
     if choice == "1":
       hi=True
@@ -2809,7 +2933,38 @@ while p==True:
       if normal_clear==False:
         if hi==True:
           normal_clear=True
-  if choice == "save":
+    if choice == "10":
+      print '(1)Change Value\n(2)Enable/Disable'
+      choice = raw_input("Choose one:")
+      if choice == "1":
+        try:
+          chars_in_line=int(raw_input('What is the new value:'))
+        except ValueError:
+          if error_message==True:
+            print 'System message: ValueError'
+            print 'Reason: A number was not entered.'
+            print 'Please wait 2.5 seconds.'
+            choice=raw_input('Hit enter to continue:')
+            choice=''
+      if choice == "2":
+        hi=True
+        if run_off==True:
+          run_off=False
+          hi=False
+        if hi==True:
+          if run_off==False:
+            run_off=True
+    if choice == "*":
+      try:
+        repeat_amount=int(raw_input('What is the new value:'))
+      except ValueError:
+        if error_message==True:
+          print 'System message: ValueError'
+          print 'Reason: A number was not entered.'
+          print 'Please wait 2.5 seconds.'
+          choice=raw_input('Hit enter to continue:')
+          choice=''
+  if choice == "save" or choice.lower() == "save data":
     #save.write('='+str()+'\n')`s`
     save_fail=False
     try:
@@ -2840,6 +2995,8 @@ while p==True:
       save.write('lapiz='+str(lapiz)+'\n')
       save.write('zinc='+str(zinc)+'\n')
       save.write('cobalt='+str(cobalt)+'\n')
+      save.write('mica='+str(mica)+'\n')
+      save.write('manganese='+str(manganese)+'\n')
       save.write('#Home storage vars\n')
       save.write('storage_wood='+str(storage_wood)+'\n')
       save.write('storage_water='+str(storage_water)+'\n')
@@ -2859,6 +3016,8 @@ while p==True:
       save.write('storage_lapiz='+str(storage_lapiz)+'\n')
       save.write('storage_zinc='+str(storage_zinc)+'\n')
       save.write('storage_cobalt='+str(storage_cobalt)+'\n')
+      save.write('storage_mica='+str(storage_mica)+'\n')
+      save.write('storage_manganese'+str(storage_manganese)+'\n')
       save.write('#Storage\n')
       save.write('self_storage='+str(self_storage)+' #Qty of items\n')
       save.write('home_storage='+str(home_storage)+' #Qty of items\n')
@@ -2904,6 +3063,8 @@ while p==True:
       save.write('donated_money='+str(donated_money)+'\n')
       save.write('donated_tf=['+str(donated_tf[0])+','+str(donated_tf[1])+','+str(donated_tf[2])+','+str(donated_tf[3])+','+str(donated_tf[4])+','+str(donated_tf[5])+','+str(donated_tf[6])+','+str(donated_tf[7])+','+str(donated_tf[8])+','+str(donated_tf[9])+','+str(donated_tf[10])+'] #0=False, 1=True. Items are in order on donate/rewards\n')
       save.write("go_home=['help','leave','break']\n")
+      save.write('repeat_amount='+str(repeat_amount)+'\n')
+      save.write('chars_in_line='+str(chars_in_line)+'\n')
       save.write('#Quests\n')
       save.write('quest_count='+str(quest_count)+'\n')
       save.write('quest1='+str(quest1)+' #False=Not done\n')
@@ -2939,6 +3100,7 @@ while p==True:
       save.write('quick_leave='+str(quick_leave)+'\n')
       save.write('hit_to_exit='+str(hit_to_exit)+'\n')
       save.write('normal_clear='+str(normal_clear)+'\n')
+      save.write('run_off='+str(run_off)+'\n')
       save.write("\n#Though all cords = distance\n")
       save.write("#Lake = 27,0,?\n")
       save.write("#River = 10,0,?\n")
@@ -2966,6 +3128,8 @@ while p==True:
       save.write('price_lapiz='+str(price_lapiz)+'\n')
       save.write('price_zinc='+str(price_zinc)+'\n')
       save.write('price_cobalt='+str(price_cobalt)+'\n')
+      save.write('price_mica='+str(price_mica)+'\n')
+      save.write('price_manganese='+str(price_manganese)+'\n')
       save.write('\n#Buy prices\n')
       save.write('buy_price_wood='+str(buy_price_wood)+'\n')
       save.write('buy_price_dirt='+str(buy_price_dirt)+'\n')
@@ -2985,6 +3149,8 @@ while p==True:
       save.write('buy_price_lapiz='+str(buy_price_lapiz)+'\n')
       save.write('buy_price_zinc='+str(buy_price_zinc)+'\n')
       save.write('buy_price_cobalt='+str(buy_price_cobalt)+'\n')
+      save.write('buy_price_mica='+str(buy_price_mica)+'\n')
+      save.write('buy_price_manganese='+str(buy_price_manganese)+'\n')
       save.write('\n# --- CODES IN GAME ---\n')
       save.write("dev_options='W3rS3cur3' #In the main menu enter this to activate.")
       save.write('\ncheat_code=""')
@@ -3009,6 +3175,8 @@ while p==True:
       save.write('lapiz=1\n')
       save.write('zinc=1\n')
       save.write('cobalt=1\n')
+      save.write('mica=1\n')
+      save.write('manganese=1\n')
       save.write('#Home storage vars\n')
       save.write('storage_wood=5\n')
       save.write('storage_water=5\n')
@@ -3028,6 +3196,8 @@ while p==True:
       save.write('storage_lapiz=2\n')
       save.write('storage_zinc=2\n')
       save.write('storage_cobalt=2\n')
+      save.write('storage_mica=2\n')
+      save.write('storage_manganese=2\n')
       save.write('#Storage\n')
       save.write('self_storage=300 #Qty of items\n')
       save.write('home_storage=500 #Qty of items\n')
@@ -3073,6 +3243,8 @@ while p==True:
       save.write('donated_money=0\n')
       save.write('donated_tf=[0,0,0,0,0,0,0,0,0,0,0] #0=False, 1=True. Items are in order on donate/rewards\n')
       save.write("go_home=['help','leave','break']\n")
+      save.write('repeat_amount=25\n')
+      save.write('chars_in_line=55\n')
       save.write('#Quests\n')
       save.write('quest_count=12\n')
       save.write('quest1=False #False=Not done\n')
@@ -3108,6 +3280,7 @@ while p==True:
       save.write('quick_leave=True\n')
       save.write('hit_to_exit=False\n')
       save.write('normal_clear=False\n')
+      save.write('run_off=True')
       save.write("\n#Though all cords = distance\n")
       save.write("#Lake = 27,0,?\n")
       save.write("#River = 10,0,?\n")
@@ -3135,6 +3308,8 @@ while p==True:
       save.write('price_lapiz=3\n')
       save.write('price_zinc=3\n')
       save.write('price_cobalt=4\n')
+      save.write('price_mica=4\n')
+      save.write('price_manganese=5\n')
       save.write('\n#Buy prices\n')
       save.write('buy_price_wood=3\n')
       save.write('buy_price_dirt=2\n')
@@ -3154,6 +3329,8 @@ while p==True:
       save.write('buy_price_lapiz=6\n')
       save.write('buy_price_zinc=5\n')
       save.write('buy_price_cobalt=6\n')
+      save.write('buy_price_mica=6\n')
+      save.write('buy_price_manganese=7\n')
       save.write('\n# --- CODES IN GAME ---\n')
       save.write("dev_options='W3rS3cur3' #In the main menu enter this to activate.")
       save.write('\ncheat_code=""')
@@ -3170,7 +3347,7 @@ while p==True:
     if hints==True:
       print 'Hint: Make sure your save file is located at this location. You may also put the all other game files here.'
     move_on=raw_input('Hit enter to exit save:')
-  if choice == "update" or choice == "updates":
+  if choice == "update" or choice.lower() == "updates" or choice.lower() == "show patch notes":
     print "Patch notes for 0.1.8\n"
     print '1. You can now hold 300 items instead of 200.'
     print '2. Starting loot is now much higher.'
@@ -3778,208 +3955,225 @@ while p==True:
   if choice == "Dev_var":
     if dev==True:
       if sides == True:
-        print 'Vars:'
-        print '(1)Dev'
-        print '(2)Dev_options'
-        print '(3)Self_storage'
-        print '(4)Home_storage'
-        print '(5)Stanima'
-        print '(6)Max_stanima'
-        print '\nQuests:'
-        print '(-)Quest1'
-        print '(-)Quest2'
-        print '(-)Quest3'
-        print '(-)Quest4'
-        print '(-)Quest5'
-        print '(-)Quest6'
-        print '(-)Quest7'
-        print '(-)Quest8'
-        print '(*)All of the quests'
-        print '\nFor vars type (Var), a space, then any number.'
-        print 'For quests type (Quest), no space, then any number.'
-        print 'For all of the above type (*).'
-        print 'Ex: Var 1'
-        print 'Ex: Quest2'
-        print 'Ex: *'
-        choice=raw_input('Do not add the (s):').lower()
-        if choice == "var 1":
-          if dev==True:
-            print 'Currently set to: True'
-          if dev==False:
-            print 'Currently set to: False'
-          choice = raw_input('True or False:').lower()
-          if choice=="true":
-            dev=True
-          if choice=="false":
-            dev=False
-          choice=''
-        if choice == "var 2":
-          print 'This is case sensitive.\nHit enter to not change password.'
-          print '\nCurrent password:',dev_options
-          choice = raw_input('New password:')
-          if choice is not "":
-            dev_options=choice
-          choice=''
-        if choice == "var 3":
-          print 'Hit enter to not change.'
-          print '\nCurrent capacity:',self_storage
-          choice=raw_input('New capacity:')
-          if choice is not "":
-            try:
-              self_storage=int(choice)
-            except ValueError:
-              if error_message==True:
-                print 'System message: ValueError'
-                print 'Reason: A number was not entered.'
-              move_on=raw_input('Hit enter to leave:')
-          choice=''
-        if choice == "var 4":
-          print 'Hit enter to not change.'
-          print '\nCurrent capacity:',home_storage
-          choice=raw_input('New capacity:')
-          if choice is not "":
-            try:
-              home_storage=int(choice)
-            except ValueError:
-              if error_message==True:
-                print 'System message: ValueError'
-                print 'Reason: A number was not entered.'
-              move_on=raw_input('Hit enter to leave:')
-          choice=''
-        if choice == "var 5":
-          print 'Hit enter to not change.'
-          print '\nCurrent setting:',stanima
-          choice=raw_input('New setting:')
-          if choice is not "":
-            try:
-              if int(choice)>max_stanima:
-                stanima=max_stanima
-              if int(choice)<max_stanima:
-                stanima=int(choice)
-            except ValueError:
-              if error_message==True:
-                print 'System message: ValueError'
-                print 'Reason: A number was not entered.'
-              move_on=raw_input('Hit enter to leave:')
-          choice=''
-        if choice == "var 6":
-          print 'Hit enter to not change.'
-          print '\nCurrent setting:',max_stanima
-          choice=raw_input('New setting:')
-          if choice is not "":
-            try:
-              max_stanima=int(choice)
-            except ValueError:
-              if error_message==True:
-                print 'System message: ValueError'
-                print 'Reason: A number was not entered.'
-              move_on=raw_input('Hit enter to leave:')
-          choice=''
-        if choice == "quest1":
-          if quest1==True:
-            print 'Currently set to: True'
-          if quest1==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest1=True
-          if choice=="false":
-            quest1=False
-          choice=''
-        if choice == "quest2":
-          if quest2==True:
-            print 'Currently set to: True'
-          if quest2==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest2=True
-          if choice=="false":
-            quest2=False
-          choice=''
-        if choice == "quest3":
-          if quest3==True:
-            print 'Currently set to: True'
-          if quest3==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest3=True
-          if choice=="false":
-            quest3=False
-        if choice == "quest4":
-          if quest4==True:
-            print 'Currently set to: True'
-          if quest4==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest4=True
-          if choice=="false":
-            quest4=False
-        if choice == "quest5":
-          if quest5==True:
-            print 'Currently set to: True'
-          if quest5==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest5=True
-          if choice=="false":
-            quest5=False
-        if choice == "quest6":
-          if quest6==True:
-            print 'Currently set to: True'
-          if quest6==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest6=True
-          if choice=="false":
-            quest6=False
-        if choice == "quest7":
-          if quest7==True:
-            print 'Currently set to: True'
-          if quest7==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest7=True
-          if choice=="false":
-            quest7=False
-        if choice == "quest8":
-          if quest8==True:
-            print 'Currently set to: True'
-          if quest8==False:
-            print 'Currently set to: False'
-          choice = raw_input("True or False:").lower()
-          if choice=="true":
-            quest8=True
-          if choice=="false":
-            quest8=False
-        if choice == "*":
-          clear()
-          print 'True = Completed'
-          print 'False = Not yet complete'
-          choice=raw_input('True of False:').lower()
-          if choice in "true":
-            quest1=True
-            quest2=True
-            quest3=True
-            quest4=True
-            quest5=True
-            quest6=True
-            quest7=True
-            quest8=True
-          if choice in "false":
-            quest1=False
-            quest2=False
-            quest3=False
-            quest4=False
-            quest5=False
-            quest6=False
-            quest7=False
-            quest8=False
+        choice=raw_input('(1)Vars or (2)Quests:')
+        if choice == "1":
+          print '(1)Dev          #Developer stuff'
+          print '(2)Dev_options  #Developer passcode'
+          print '(3)Self_storage #Space in inventory'
+          print '(4)Home_storage #Space at home'
+          print '(5)Stanima      #Energy'
+          print '(6)Max_stanima  #Max energy'
+          choice=raw_input('Choose an item:')
+          if choice == "1":
+            if dev==True:
+              print 'Currently set to: True'
+            if dev==False:
+              print 'Currently set to: False'
+            choice = raw_input('True or False:').lower()
+            if choice=="true":
+              dev=True
+            if choice=="false":
+              dev=False
+            choice=''
+          if choice == "2":
+            print 'This is case sensitive.\nHit enter to not change password.'
+            print '\nCurrent password:',dev_options
+            choice = raw_input('New password:')
+            if choice is not "":
+              dev_options=choice
+            choice=''
+          if choice == "3":
+            print 'Hit enter to not change.'
+            print '\nCurrent capacity:',self_storage
+            choice=raw_input('New capacity:')
+            if choice is not "":
+              try:
+                self_storage=int(choice)
+              except ValueError:
+                if error_message==True:
+                  print 'System message: ValueError'
+                  print 'Reason: A number was not entered.'
+                move_on=raw_input('Hit enter to leave:')
+            choice=''
+          if choice == "4":
+            print 'Hit enter to not change.'
+            print '\nCurrent capacity:',home_storage
+            choice=raw_input('New capacity:')
+            if choice is not "":
+              try:
+                home_storage=int(choice)
+              except ValueError:
+                if error_message==True:
+                  print 'System message: ValueError'
+                  print 'Reason: A number was not entered.'
+                move_on=raw_input('Hit enter to leave:')
+            choice=''
+          if choice == "5":
+            print 'Hit enter to not change.'
+            print '\nCurrent setting:',stanima
+            choice=raw_input('New setting:')
+            if choice is not "":
+              try:
+                if int(choice)+1>max_stanima:
+                  stanima=max_stanima
+                if int(choice)<max_stanima+1:
+                  stanima=int(choice)
+              except ValueError:
+                if error_message==True:
+                  print 'System message: ValueError'
+                  print 'Reason: A number was not entered.'
+                move_on=raw_input('Hit enter to leave:')
+            choice=''
+          if choice == "6":
+            print 'Hit enter to not change.'
+            print '\nCurrent setting:',max_stanima
+            choice=raw_input('New setting:')
+            if choice is not "":
+              try:
+                max_stanima=int(choice)
+              except ValueError:
+                if error_message==True:
+                  print 'System message: ValueError'
+                  print 'Reason: A number was not entered.'
+                move_on=raw_input('Hit enter to leave:')
+            choice=''
+        if choice == "2":
+          hi=True
+          print '(a1)Quest1   (b1)Quest7'
+          print '(a2)Quest2   (b2)Quest8'
+          print '(a3)Quest3   (b3)Quest9'
+          print '(a4)Quest4   (b4)Quest10'
+          print '(a5)Quest5   (b5)Quest11'
+          print '(a6)Quest6   (b6)Quest12'
+          print '(*)All of the quests'
+          choice=raw_input('Choose an item:')
+          if choice == "a1":
+            if quest1==True:
+              quest1=False
+              hi=False
+            if quest1==False:
+              if hi==True:
+                quest1=True
+            choice=''
+          if choice == "a2":
+            if quest2==True:
+              quest2=False
+              hi=False
+            if quest2==False:
+              if hi==True:
+                quest2=True
+            choice=''
+          if choice == "a3":
+            if quest3==True:
+              quest3=False
+              hi=False
+            if quest3==False:
+              if hi==True:
+                quest3=True
+            choice=''
+          if choice == "a4":
+            if quest4==True:
+              quest4=False
+              hi=False
+            if quest4==False:
+              if hi==True:
+                quest4=True
+            choice=''
+          if choice == "a5":
+            if quest5==True:
+              quest5=False
+              hi=False
+            if quest5==False:
+              if hi==True:
+                quest5=True
+            choice=''
+          if choice == "a6":
+            if quest6==True:
+              quest6=False
+              hi=False
+            if quest6==False:
+              if hi==True:
+                quest6=True
+            choice=''
+          if choice == "b1":
+            if quest7==True:
+              quest7=False
+              hi=False
+            if quest7==False:
+              if hi==True:
+                quest7=True
+            choice=''
+          if choice == "b2":
+            if quest8==True:
+              quest8=False
+              hi=False
+            if quest8==False:
+              if hi==True:
+                quest8=True
+            choice=''
+          if choice == "b3":
+            if quest9==True:
+              quest9=False
+              hi=False
+            if quest9==False:
+              if hi==True:
+                quest9=True
+            choice=''
+          if choice == "b4":
+            if quest10==True:
+              quest10=False
+              hi=False
+            if quest10==False:
+              if hi==True:
+                quest10=True
+            choice=''
+          if choice == "b5":
+            if quest11==True:
+              quest11=False
+              hi=False
+            if quest11==False:
+              if hi==True:
+                quest11=True
+            choice=''
+          if choice == "b6":
+            if quest12==True:
+              quest12=False
+              hi=False
+            if quest12==False:
+              if hi==True:
+                quest12=True
+            choice=''
+          if choice == "*":
+            clear()
+            print 'True = Completed'
+            print 'False = Not yet complete'
+            choice=raw_input('True of False:').lower()
+            if choice in "true":
+              quest1=True
+              quest2=True
+              quest3=True
+              quest4=True
+              quest5=True
+              quest6=True
+              quest7=True
+              quest8=True
+              quest9=True
+              quest10=True
+              quest11=True
+              quest12=True
+            if choice in "false":
+              quest1=False
+              quest2=False
+              quest3=False
+              quest4=False
+              quest5=False
+              quest6=False
+              quest7=False
+              quest8=False
+              quest9=False
+              quest10=False
+              quest11=False
+              quest12=False
   if choice == "vars_beta":
     if dev==True:
       if sides==True:
@@ -3992,3 +4186,4 @@ while p==True:
       if dev==False:
         dev_promt()
         move_on=raw_input('Hit enter to exit vars_beta:')
+
