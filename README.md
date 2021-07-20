@@ -7,13 +7,13 @@ Please give feedback on your thoughts of this game.
 HINT: This game is not yet finished. Game is in very early developement.
 
 
-Released Version: 0.1.8 Test 2
+Released Version: 0.1.8 Test 3
 
-Release Date: 06/29/21
+Release Date: 07/20/21
 
-Release Time: 12:02 PM Eastern Daylight Time
+Release Time: 02:04 PM Eastern Daylight Time
 
 
-Next Version: 0.1.8 Test 3
+Next Version: 0.1.9 Test 1
 
 Please note: Game is not fully tested in this version. I used Microsoft Visual Studio Code with python to create this version. I usually create this game in trinket.io. Ps: Trinket.io is a website.
