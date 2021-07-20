@@ -1,34 +1,27 @@
 User updates in this version.
-1. Self_storage is now set to 300 instead of 200.
-2. Minerals items and tools now are set to 5 in storage var. 
-3. Goodies are now set to 2 in storage var.
-4. Save function now shows location of save file.
-5. Fixed a bug When dev_menu() says "How many:" and a str is entered, an error occurs and program closes.
-6. Functions will now correctly count items in inventory. This is controlled by a def function called self_int() and storage_int()
-7. Gather resources now says "Hit enter to exit Gather Resources:" when it used to say "Hit enter to exit crafting:"
-8. Save now actually sets variable create_new_save to False when it's currently set to True.
-9. Added a hints_loop setting in settings.
-10. Gather Resources will now not display tips if not enabled.
-11. Tips now clears screen when you choose an option other than quick leave.
-12. Added save to tips function.
-13. Updated updates function for users.
-
-Update 0.1.8:
-1. Balance out prices and starting loot.
-2. Allow user to type number or name of function on main menu.
-3. Update tips function.
-4. Add some hints in the game.
-5. Add mica and manganese into game.
+1. Added repeat_amount to save function.
+2. Edited Normal Screen Clean setting in settings.
+3. Added a setting to change Print Repeat in settings. Print Repeat controls how many empty prints to do to make sure text is off the screen. 
+4. Edited the look of dev_var function.
+5. When editing quest vars in dev_var, vars now automatically toggle from their current value instead of asking for a user input to change it.
+6. Dev_var now can change quests 9-12 vars.
+7. Screen Run Off Value setting added. Right now the feature only works on home menu.
+8. User can now type the corresponding character or name of each function for selection on main menu.
+9. Added a setting to toggle Screen Run Off (on or off).
+10. Gather Resources, Change Location, and Crafting Menu now use the Screen Run Off feature if enabled.
+11. Axes, Pickaxes, and Shovels are now included in inventory count(self_int).
+12. Added Mica and Manganese into Sell, Inventory, Save, and Buy.
 
 update 0.1.9 Test 1-3:
 1. User can leave a function anytime by typing one of these. go_home=['help','leave','break']
-2. Add setting for user to enable/disable quick leave. Already in vars_beta.py.
-3. Some python running apps don't use os.system('clear').  Make an option to create multiple lines for clearing.
-4. Add setting to show dev tools in tips. Also add items for dev tools in tips.
-5. Allow user to change more than one setting at a time. For easier use.
-6. Possibly change tips to hints. Maybe.
-7. Add more donation rewards.
-8. Add 2 more quests.
+2. Some python running apps don't use os.system('clear').  Make an option to create multiple lines for clearing.
+3. Add setting to show dev tools in tips. Also add items for dev tools in tips.
+4. Allow user to change more than one setting at a time. For easier use.
+5. Possibly change tips to hints. Maybe.
+6. Add more donation rewards.
+7. Add 2 more quests.
+8. Create more future quests in game.info file.
+9. Integrate Screen Run Off feature.
 
 update 0.2.0:
 1. Convert code from python2 to python3. Maybe.
