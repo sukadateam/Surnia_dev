@@ -17,3 +17,6 @@ Release Time: 02:04 PM Eastern Daylight Time
 Next Version: 0.1.9 Test 1
 
 Please note: Game is not fully tested in this version. I used Microsoft Visual Studio Code with python to create this version. I usually create this game in trinket.io. Ps: Trinket.io is a website.
+
+
+Please note: This project has been abondend. Due to the lack of the forsee future of this game. I could not think of a story to add. I give full permission for others to create versions of this. As long as I Brandon Robinson is credited for the work.
